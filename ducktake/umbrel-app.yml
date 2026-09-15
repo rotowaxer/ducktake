@@ -1,0 +1,22 @@
+manifestVersion: 1.0.0
+id: ducktake
+icon: https://raw.githubusercontent.com/rotowaxer/ducktake/main/ducktake/icon.svg
+name: Ducktake
+tagline: Lab reagent inventory
+category: developer
+version: "2"
+port: 18095
+description: >-
+  Ducktake reagent and consumable inventory for a pathology lab, running on PocketBase.
+  
+developer: Rotowaxer
+website: https://pocketbase.io/
+submitter: Rotowaxer
+support: https://github.com/pocketbase/pocketbase/discussions
+repo: ""
+gallery: []
+path: /
+dependencies: []
+defaultUsername: ""
+defaultPassword: ""
+releaseNotes: ""
