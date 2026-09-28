@@ -4,7 +4,7 @@ icon: https://raw.githubusercontent.com/rotowaxer/ducktake/main/duck-labtake/ico
 name: LabTake
 tagline: Optimise Stocktake within the Lab
 category: developer
-version: "1"
+version: "2"
 port: 18096
 description: >-
 
