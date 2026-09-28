@@ -7,14 +7,10 @@ category: developer
 version: "1"
 port: 18096
 description: >-
-  A demonstration copy of a laboratory inventory app: reagent and consumable stock,
-  lots, expiry dates, pre-acceptance, stocktakes and ordering, running on PocketBase.
-
-
-  It comes with sample data — real products with made-up stock, lots and dates — and
-  three shared sign-ins (Admin, Reviewer and Bench staff) offered on its sign-in screen.
-  Everything visitors change is put back every night at 3 a.m., with the dates moved on
-  to the new day, so the demo never goes stale. It sends no email.
+  A demonstration copy of a laboratory inventory app:
+  
+Simulates real data with a nightly reset at 3 a.m 
+  
 developer: Rotowaxer
 website: https://pocketbase.io/
 submitter: Rotowaxer
