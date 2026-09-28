@@ -7,7 +7,7 @@ category: developer
 version: "1"
 port: 18096
 description: >-
-For the instalation of a custom application on umbel OS running through pocketbase
+  For the instalation of a custom application on umbel OS running through pocketbase
 developer: Rotowaxer
 website: https://pocketbase.io/
 submitter: Rotowaxer
