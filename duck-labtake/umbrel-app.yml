@@ -1,10 +1,10 @@
-manifestVersion: 2.0.0
+manifestVersion: 1.0.0
 id: duck-labtake
 icon: https://raw.githubusercontent.com/rotowaxer/ducktake/main/duck-labtake/icon.svg
 name: LabTake
 tagline: Optimise Stocktake within the Lab
 category: developer
-version: "2"
+version: "1"
 port: 18096
 description: >-
 
