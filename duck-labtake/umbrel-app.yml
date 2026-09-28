@@ -2,12 +2,12 @@ manifestVersion: 1.0.0
 id: duck-labtake
 icon: https://raw.githubusercontent.com/rotowaxer/ducktake/main/duck-labtake/icon.svg
 name: LabTake
-tagline: Optimise Stocktake within the Lab
+tagline: optimize stock in the lab
 category: developer
 version: "1"
 port: 18096
 description: >-
-  For the instalation of a custom application on umbel OS running through pocketbase
+  For the installation of a custom application on umbrelOS, running through PocketBase.
 developer: Rotowaxer
 website: https://pocketbase.io/
 submitter: Rotowaxer
