@@ -1,13 +1,21 @@
 manifestVersion: 1.0.0
 id: duck-labtake
 icon: https://raw.githubusercontent.com/rotowaxer/ducktake/main/duck-labtake/icon.svg
-name: LabTake
-tagline: optimize stock in the lab
+name: LabTake Demo
+tagline: Try a lab stock and expiry tracker with sample data
 category: developer
-version: "1"
+version: "2"
 port: 18096
 description: >-
-  For the installation of a custom application on umbrelOS, running through PocketBase.
+  A demonstration copy of a laboratory inventory app:
+
+
+  Simulates real data with a nightly reset at 3 a.m.
+
+
+  Up to ten visitors at once each get a copy of their own, reset for
+  them, which is wiped after 30 minutes without use.
+
 developer: Rotowaxer
 website: https://pocketbase.io/
 submitter: Rotowaxer
@@ -16,6 +24,8 @@ repo: ""
 gallery: []
 path: /
 dependencies: []
-defaultUsername: ""
-defaultPassword: ""
-releaseNotes: ""
+defaultUsername: "admin@labtake.demo"
+defaultPassword: "labtake-demo"
+releaseNotes: >-
+  A copy of the demo for each visitor: up to ten at once, each reset for
+  them and wiped after 30 minutes without use.
