@@ -13,8 +13,8 @@ description: >-
   Simulates real data with a nightly reset at 3 a.m.
 
 
-  Up to ten visitors at once each get a copy of their own, reset for
-  them, which is wiped after 30 minutes without use.
+  Up to ten visitors at once each get a copy of their own
+  
 
 developer: Rotowaxer
 website: https://pocketbase.io/
@@ -27,5 +27,4 @@ dependencies: []
 defaultUsername: "admin@labtake.demo"
 defaultPassword: "labtake-demo"
 releaseNotes: >-
-  A copy of the demo for each visitor: up to ten at once, each reset for
-  them and wiped after 30 minutes without use.
+  Updated version allows for 10 users within the demo enviroment
