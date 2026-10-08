@@ -4,7 +4,7 @@ icon: https://raw.githubusercontent.com/rotowaxer/ducktake/main/duck-labtake/ico
 name: LabTake Demo
 tagline: Try a lab stock and expiry tracker with sample data
 category: developer
-version: "2"
+version: "3"
 port: 18096
 description: >-
   A demonstration copy of a laboratory inventory app:
@@ -13,7 +13,9 @@ description: >-
   Simulates real data with a nightly reset at 3 a.m.
 
 
-  Up to ten visitors at once each get a copy of their own
+  50 copies of the demo: each visitor gets a copy of their own, and once all
+  50 are taken each copy is shared by up to 5 people, so about 250 people
+  can try it at once
   
 
 developer: Rotowaxer
@@ -27,4 +29,6 @@ dependencies: []
 defaultUsername: "admin@labtake.demo"
 defaultPassword: "labtake-demo"
 releaseNotes: >-
-  Updated version allows for 10 users within the demo enviroment
+  50 copies of the demo, each shared by up to 5 people once all are taken
+  (about 250 people at once). Reset the demo is refused on a shared copy, so
+  nobody wipes the others' changes

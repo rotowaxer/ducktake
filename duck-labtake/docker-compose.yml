@@ -1,8 +1,10 @@
-# LabTake demo (v166): a copy of the demo for each visitor.
+# LabTake demo: the gate and 50 copies of the demo.
+# Made by tools/demo/make_compose.js (v172): change that and run it, not this.
 #
 # The Umbrel proxy talks to the gate (the app service); the gate gives each visitor a copy
-# of their own (slot1 ... slot10), resets it for them, and takes it back
-# after 30 minutes without use. Every copy has its own data folder and
+# of their own (slot1 ... slot50), resets it for them, and takes it back
+# after 30 minutes without use. Once none is free, a copy in use takes up
+# to 5 people (LABTAKE_SHARE). Every copy has its own data folder and
 # shares the demo's public, hooks and migrations folders. See
 # docs/labtake-demo.md and gate/gate.js.
 services:
@@ -21,7 +23,8 @@ services:
     command: ["node", "/gate/gate.js"]
     environment:
       PORT: "8090"
-      LABTAKE_SLOTS: "10"
+      LABTAKE_SLOTS: "50"
+      LABTAKE_SHARE: "5"
       LABTAKE_SLOT_HOST: "http://duck-labtake_slot{n}_1:8090"
       LABTAKE_IDLE_MIN: "30"
       LABTAKE_SLOT_KEY: ${APP_SEED}
@@ -40,6 +43,46 @@ services:
       - slot8
       - slot9
       - slot10
+      - slot11
+      - slot12
+      - slot13
+      - slot14
+      - slot15
+      - slot16
+      - slot17
+      - slot18
+      - slot19
+      - slot20
+      - slot21
+      - slot22
+      - slot23
+      - slot24
+      - slot25
+      - slot26
+      - slot27
+      - slot28
+      - slot29
+      - slot30
+      - slot31
+      - slot32
+      - slot33
+      - slot34
+      - slot35
+      - slot36
+      - slot37
+      - slot38
+      - slot39
+      - slot40
+      - slot41
+      - slot42
+      - slot43
+      - slot44
+      - slot45
+      - slot46
+      - slot47
+      - slot48
+      - slot49
+      - slot50
 
   slot1:
     image: ghcr.io/muchobien/pocketbase:0.39.6
@@ -157,6 +200,486 @@ services:
       LABTAKE_SLOT_KEY: ${APP_SEED}
     volumes:
       - ${APP_DATA_DIR}/data/slots/10:/pb_data
+      - ${APP_DATA_DIR}/data/public:/pb_public
+      - ${APP_DATA_DIR}/data/hooks:/pb_hooks
+      - ${APP_DATA_DIR}/data/migrations:/pb_migrations
+
+  slot11:
+    image: ghcr.io/muchobien/pocketbase:0.39.6
+    restart: unless-stopped
+    stop_grace_period: 1m
+    environment:
+      LABTAKE_SLOT_KEY: ${APP_SEED}
+    volumes:
+      - ${APP_DATA_DIR}/data/slots/11:/pb_data
+      - ${APP_DATA_DIR}/data/public:/pb_public
+      - ${APP_DATA_DIR}/data/hooks:/pb_hooks
+      - ${APP_DATA_DIR}/data/migrations:/pb_migrations
+
+  slot12:
+    image: ghcr.io/muchobien/pocketbase:0.39.6
+    restart: unless-stopped
+    stop_grace_period: 1m
+    environment:
+      LABTAKE_SLOT_KEY: ${APP_SEED}
+    volumes:
+      - ${APP_DATA_DIR}/data/slots/12:/pb_data
+      - ${APP_DATA_DIR}/data/public:/pb_public
+      - ${APP_DATA_DIR}/data/hooks:/pb_hooks
+      - ${APP_DATA_DIR}/data/migrations:/pb_migrations
+
+  slot13:
+    image: ghcr.io/muchobien/pocketbase:0.39.6
+    restart: unless-stopped
+    stop_grace_period: 1m
+    environment:
+      LABTAKE_SLOT_KEY: ${APP_SEED}
+    volumes:
+      - ${APP_DATA_DIR}/data/slots/13:/pb_data
+      - ${APP_DATA_DIR}/data/public:/pb_public
+      - ${APP_DATA_DIR}/data/hooks:/pb_hooks
+      - ${APP_DATA_DIR}/data/migrations:/pb_migrations
+
+  slot14:
+    image: ghcr.io/muchobien/pocketbase:0.39.6
+    restart: unless-stopped
+    stop_grace_period: 1m
+    environment:
+      LABTAKE_SLOT_KEY: ${APP_SEED}
+    volumes:
+      - ${APP_DATA_DIR}/data/slots/14:/pb_data
+      - ${APP_DATA_DIR}/data/public:/pb_public
+      - ${APP_DATA_DIR}/data/hooks:/pb_hooks
+      - ${APP_DATA_DIR}/data/migrations:/pb_migrations
+
+  slot15:
+    image: ghcr.io/muchobien/pocketbase:0.39.6
+    restart: unless-stopped
+    stop_grace_period: 1m
+    environment:
+      LABTAKE_SLOT_KEY: ${APP_SEED}
+    volumes:
+      - ${APP_DATA_DIR}/data/slots/15:/pb_data
+      - ${APP_DATA_DIR}/data/public:/pb_public
+      - ${APP_DATA_DIR}/data/hooks:/pb_hooks
+      - ${APP_DATA_DIR}/data/migrations:/pb_migrations
+
+  slot16:
+    image: ghcr.io/muchobien/pocketbase:0.39.6
+    restart: unless-stopped
+    stop_grace_period: 1m
+    environment:
+      LABTAKE_SLOT_KEY: ${APP_SEED}
+    volumes:
+      - ${APP_DATA_DIR}/data/slots/16:/pb_data
+      - ${APP_DATA_DIR}/data/public:/pb_public
+      - ${APP_DATA_DIR}/data/hooks:/pb_hooks
+      - ${APP_DATA_DIR}/data/migrations:/pb_migrations
+
+  slot17:
+    image: ghcr.io/muchobien/pocketbase:0.39.6
+    restart: unless-stopped
+    stop_grace_period: 1m
+    environment:
+      LABTAKE_SLOT_KEY: ${APP_SEED}
+    volumes:
+      - ${APP_DATA_DIR}/data/slots/17:/pb_data
+      - ${APP_DATA_DIR}/data/public:/pb_public
+      - ${APP_DATA_DIR}/data/hooks:/pb_hooks
+      - ${APP_DATA_DIR}/data/migrations:/pb_migrations
+
+  slot18:
+    image: ghcr.io/muchobien/pocketbase:0.39.6
+    restart: unless-stopped
+    stop_grace_period: 1m
+    environment:
+      LABTAKE_SLOT_KEY: ${APP_SEED}
+    volumes:
+      - ${APP_DATA_DIR}/data/slots/18:/pb_data
+      - ${APP_DATA_DIR}/data/public:/pb_public
+      - ${APP_DATA_DIR}/data/hooks:/pb_hooks
+      - ${APP_DATA_DIR}/data/migrations:/pb_migrations
+
+  slot19:
+    image: ghcr.io/muchobien/pocketbase:0.39.6
+    restart: unless-stopped
+    stop_grace_period: 1m
+    environment:
+      LABTAKE_SLOT_KEY: ${APP_SEED}
+    volumes:
+      - ${APP_DATA_DIR}/data/slots/19:/pb_data
+      - ${APP_DATA_DIR}/data/public:/pb_public
+      - ${APP_DATA_DIR}/data/hooks:/pb_hooks
+      - ${APP_DATA_DIR}/data/migrations:/pb_migrations
+
+  slot20:
+    image: ghcr.io/muchobien/pocketbase:0.39.6
+    restart: unless-stopped
+    stop_grace_period: 1m
+    environment:
+      LABTAKE_SLOT_KEY: ${APP_SEED}
+    volumes:
+      - ${APP_DATA_DIR}/data/slots/20:/pb_data
+      - ${APP_DATA_DIR}/data/public:/pb_public
+      - ${APP_DATA_DIR}/data/hooks:/pb_hooks
+      - ${APP_DATA_DIR}/data/migrations:/pb_migrations
+
+  slot21:
+    image: ghcr.io/muchobien/pocketbase:0.39.6
+    restart: unless-stopped
+    stop_grace_period: 1m
+    environment:
+      LABTAKE_SLOT_KEY: ${APP_SEED}
+    volumes:
+      - ${APP_DATA_DIR}/data/slots/21:/pb_data
+      - ${APP_DATA_DIR}/data/public:/pb_public
+      - ${APP_DATA_DIR}/data/hooks:/pb_hooks
+      - ${APP_DATA_DIR}/data/migrations:/pb_migrations
+
+  slot22:
+    image: ghcr.io/muchobien/pocketbase:0.39.6
+    restart: unless-stopped
+    stop_grace_period: 1m
+    environment:
+      LABTAKE_SLOT_KEY: ${APP_SEED}
+    volumes:
+      - ${APP_DATA_DIR}/data/slots/22:/pb_data
+      - ${APP_DATA_DIR}/data/public:/pb_public
+      - ${APP_DATA_DIR}/data/hooks:/pb_hooks
+      - ${APP_DATA_DIR}/data/migrations:/pb_migrations
+
+  slot23:
+    image: ghcr.io/muchobien/pocketbase:0.39.6
+    restart: unless-stopped
+    stop_grace_period: 1m
+    environment:
+      LABTAKE_SLOT_KEY: ${APP_SEED}
+    volumes:
+      - ${APP_DATA_DIR}/data/slots/23:/pb_data
+      - ${APP_DATA_DIR}/data/public:/pb_public
+      - ${APP_DATA_DIR}/data/hooks:/pb_hooks
+      - ${APP_DATA_DIR}/data/migrations:/pb_migrations
+
+  slot24:
+    image: ghcr.io/muchobien/pocketbase:0.39.6
+    restart: unless-stopped
+    stop_grace_period: 1m
+    environment:
+      LABTAKE_SLOT_KEY: ${APP_SEED}
+    volumes:
+      - ${APP_DATA_DIR}/data/slots/24:/pb_data
+      - ${APP_DATA_DIR}/data/public:/pb_public
+      - ${APP_DATA_DIR}/data/hooks:/pb_hooks
+      - ${APP_DATA_DIR}/data/migrations:/pb_migrations
+
+  slot25:
+    image: ghcr.io/muchobien/pocketbase:0.39.6
+    restart: unless-stopped
+    stop_grace_period: 1m
+    environment:
+      LABTAKE_SLOT_KEY: ${APP_SEED}
+    volumes:
+      - ${APP_DATA_DIR}/data/slots/25:/pb_data
+      - ${APP_DATA_DIR}/data/public:/pb_public
+      - ${APP_DATA_DIR}/data/hooks:/pb_hooks
+      - ${APP_DATA_DIR}/data/migrations:/pb_migrations
+
+  slot26:
+    image: ghcr.io/muchobien/pocketbase:0.39.6
+    restart: unless-stopped
+    stop_grace_period: 1m
+    environment:
+      LABTAKE_SLOT_KEY: ${APP_SEED}
+    volumes:
+      - ${APP_DATA_DIR}/data/slots/26:/pb_data
+      - ${APP_DATA_DIR}/data/public:/pb_public
+      - ${APP_DATA_DIR}/data/hooks:/pb_hooks
+      - ${APP_DATA_DIR}/data/migrations:/pb_migrations
+
+  slot27:
+    image: ghcr.io/muchobien/pocketbase:0.39.6
+    restart: unless-stopped
+    stop_grace_period: 1m
+    environment:
+      LABTAKE_SLOT_KEY: ${APP_SEED}
+    volumes:
+      - ${APP_DATA_DIR}/data/slots/27:/pb_data
+      - ${APP_DATA_DIR}/data/public:/pb_public
+      - ${APP_DATA_DIR}/data/hooks:/pb_hooks
+      - ${APP_DATA_DIR}/data/migrations:/pb_migrations
+
+  slot28:
+    image: ghcr.io/muchobien/pocketbase:0.39.6
+    restart: unless-stopped
+    stop_grace_period: 1m
+    environment:
+      LABTAKE_SLOT_KEY: ${APP_SEED}
+    volumes:
+      - ${APP_DATA_DIR}/data/slots/28:/pb_data
+      - ${APP_DATA_DIR}/data/public:/pb_public
+      - ${APP_DATA_DIR}/data/hooks:/pb_hooks
+      - ${APP_DATA_DIR}/data/migrations:/pb_migrations
+
+  slot29:
+    image: ghcr.io/muchobien/pocketbase:0.39.6
+    restart: unless-stopped
+    stop_grace_period: 1m
+    environment:
+      LABTAKE_SLOT_KEY: ${APP_SEED}
+    volumes:
+      - ${APP_DATA_DIR}/data/slots/29:/pb_data
+      - ${APP_DATA_DIR}/data/public:/pb_public
+      - ${APP_DATA_DIR}/data/hooks:/pb_hooks
+      - ${APP_DATA_DIR}/data/migrations:/pb_migrations
+
+  slot30:
+    image: ghcr.io/muchobien/pocketbase:0.39.6
+    restart: unless-stopped
+    stop_grace_period: 1m
+    environment:
+      LABTAKE_SLOT_KEY: ${APP_SEED}
+    volumes:
+      - ${APP_DATA_DIR}/data/slots/30:/pb_data
+      - ${APP_DATA_DIR}/data/public:/pb_public
+      - ${APP_DATA_DIR}/data/hooks:/pb_hooks
+      - ${APP_DATA_DIR}/data/migrations:/pb_migrations
+
+  slot31:
+    image: ghcr.io/muchobien/pocketbase:0.39.6
+    restart: unless-stopped
+    stop_grace_period: 1m
+    environment:
+      LABTAKE_SLOT_KEY: ${APP_SEED}
+    volumes:
+      - ${APP_DATA_DIR}/data/slots/31:/pb_data
+      - ${APP_DATA_DIR}/data/public:/pb_public
+      - ${APP_DATA_DIR}/data/hooks:/pb_hooks
+      - ${APP_DATA_DIR}/data/migrations:/pb_migrations
+
+  slot32:
+    image: ghcr.io/muchobien/pocketbase:0.39.6
+    restart: unless-stopped
+    stop_grace_period: 1m
+    environment:
+      LABTAKE_SLOT_KEY: ${APP_SEED}
+    volumes:
+      - ${APP_DATA_DIR}/data/slots/32:/pb_data
+      - ${APP_DATA_DIR}/data/public:/pb_public
+      - ${APP_DATA_DIR}/data/hooks:/pb_hooks
+      - ${APP_DATA_DIR}/data/migrations:/pb_migrations
+
+  slot33:
+    image: ghcr.io/muchobien/pocketbase:0.39.6
+    restart: unless-stopped
+    stop_grace_period: 1m
+    environment:
+      LABTAKE_SLOT_KEY: ${APP_SEED}
+    volumes:
+      - ${APP_DATA_DIR}/data/slots/33:/pb_data
+      - ${APP_DATA_DIR}/data/public:/pb_public
+      - ${APP_DATA_DIR}/data/hooks:/pb_hooks
+      - ${APP_DATA_DIR}/data/migrations:/pb_migrations
+
+  slot34:
+    image: ghcr.io/muchobien/pocketbase:0.39.6
+    restart: unless-stopped
+    stop_grace_period: 1m
+    environment:
+      LABTAKE_SLOT_KEY: ${APP_SEED}
+    volumes:
+      - ${APP_DATA_DIR}/data/slots/34:/pb_data
+      - ${APP_DATA_DIR}/data/public:/pb_public
+      - ${APP_DATA_DIR}/data/hooks:/pb_hooks
+      - ${APP_DATA_DIR}/data/migrations:/pb_migrations
+
+  slot35:
+    image: ghcr.io/muchobien/pocketbase:0.39.6
+    restart: unless-stopped
+    stop_grace_period: 1m
+    environment:
+      LABTAKE_SLOT_KEY: ${APP_SEED}
+    volumes:
+      - ${APP_DATA_DIR}/data/slots/35:/pb_data
+      - ${APP_DATA_DIR}/data/public:/pb_public
+      - ${APP_DATA_DIR}/data/hooks:/pb_hooks
+      - ${APP_DATA_DIR}/data/migrations:/pb_migrations
+
+  slot36:
+    image: ghcr.io/muchobien/pocketbase:0.39.6
+    restart: unless-stopped
+    stop_grace_period: 1m
+    environment:
+      LABTAKE_SLOT_KEY: ${APP_SEED}
+    volumes:
+      - ${APP_DATA_DIR}/data/slots/36:/pb_data
+      - ${APP_DATA_DIR}/data/public:/pb_public
+      - ${APP_DATA_DIR}/data/hooks:/pb_hooks
+      - ${APP_DATA_DIR}/data/migrations:/pb_migrations
+
+  slot37:
+    image: ghcr.io/muchobien/pocketbase:0.39.6
+    restart: unless-stopped
+    stop_grace_period: 1m
+    environment:
+      LABTAKE_SLOT_KEY: ${APP_SEED}
+    volumes:
+      - ${APP_DATA_DIR}/data/slots/37:/pb_data
+      - ${APP_DATA_DIR}/data/public:/pb_public
+      - ${APP_DATA_DIR}/data/hooks:/pb_hooks
+      - ${APP_DATA_DIR}/data/migrations:/pb_migrations
+
+  slot38:
+    image: ghcr.io/muchobien/pocketbase:0.39.6
+    restart: unless-stopped
+    stop_grace_period: 1m
+    environment:
+      LABTAKE_SLOT_KEY: ${APP_SEED}
+    volumes:
+      - ${APP_DATA_DIR}/data/slots/38:/pb_data
+      - ${APP_DATA_DIR}/data/public:/pb_public
+      - ${APP_DATA_DIR}/data/hooks:/pb_hooks
+      - ${APP_DATA_DIR}/data/migrations:/pb_migrations
+
+  slot39:
+    image: ghcr.io/muchobien/pocketbase:0.39.6
+    restart: unless-stopped
+    stop_grace_period: 1m
+    environment:
+      LABTAKE_SLOT_KEY: ${APP_SEED}
+    volumes:
+      - ${APP_DATA_DIR}/data/slots/39:/pb_data
+      - ${APP_DATA_DIR}/data/public:/pb_public
+      - ${APP_DATA_DIR}/data/hooks:/pb_hooks
+      - ${APP_DATA_DIR}/data/migrations:/pb_migrations
+
+  slot40:
+    image: ghcr.io/muchobien/pocketbase:0.39.6
+    restart: unless-stopped
+    stop_grace_period: 1m
+    environment:
+      LABTAKE_SLOT_KEY: ${APP_SEED}
+    volumes:
+      - ${APP_DATA_DIR}/data/slots/40:/pb_data
+      - ${APP_DATA_DIR}/data/public:/pb_public
+      - ${APP_DATA_DIR}/data/hooks:/pb_hooks
+      - ${APP_DATA_DIR}/data/migrations:/pb_migrations
+
+  slot41:
+    image: ghcr.io/muchobien/pocketbase:0.39.6
+    restart: unless-stopped
+    stop_grace_period: 1m
+    environment:
+      LABTAKE_SLOT_KEY: ${APP_SEED}
+    volumes:
+      - ${APP_DATA_DIR}/data/slots/41:/pb_data
+      - ${APP_DATA_DIR}/data/public:/pb_public
+      - ${APP_DATA_DIR}/data/hooks:/pb_hooks
+      - ${APP_DATA_DIR}/data/migrations:/pb_migrations
+
+  slot42:
+    image: ghcr.io/muchobien/pocketbase:0.39.6
+    restart: unless-stopped
+    stop_grace_period: 1m
+    environment:
+      LABTAKE_SLOT_KEY: ${APP_SEED}
+    volumes:
+      - ${APP_DATA_DIR}/data/slots/42:/pb_data
+      - ${APP_DATA_DIR}/data/public:/pb_public
+      - ${APP_DATA_DIR}/data/hooks:/pb_hooks
+      - ${APP_DATA_DIR}/data/migrations:/pb_migrations
+
+  slot43:
+    image: ghcr.io/muchobien/pocketbase:0.39.6
+    restart: unless-stopped
+    stop_grace_period: 1m
+    environment:
+      LABTAKE_SLOT_KEY: ${APP_SEED}
+    volumes:
+      - ${APP_DATA_DIR}/data/slots/43:/pb_data
+      - ${APP_DATA_DIR}/data/public:/pb_public
+      - ${APP_DATA_DIR}/data/hooks:/pb_hooks
+      - ${APP_DATA_DIR}/data/migrations:/pb_migrations
+
+  slot44:
+    image: ghcr.io/muchobien/pocketbase:0.39.6
+    restart: unless-stopped
+    stop_grace_period: 1m
+    environment:
+      LABTAKE_SLOT_KEY: ${APP_SEED}
+    volumes:
+      - ${APP_DATA_DIR}/data/slots/44:/pb_data
+      - ${APP_DATA_DIR}/data/public:/pb_public
+      - ${APP_DATA_DIR}/data/hooks:/pb_hooks
+      - ${APP_DATA_DIR}/data/migrations:/pb_migrations
+
+  slot45:
+    image: ghcr.io/muchobien/pocketbase:0.39.6
+    restart: unless-stopped
+    stop_grace_period: 1m
+    environment:
+      LABTAKE_SLOT_KEY: ${APP_SEED}
+    volumes:
+      - ${APP_DATA_DIR}/data/slots/45:/pb_data
+      - ${APP_DATA_DIR}/data/public:/pb_public
+      - ${APP_DATA_DIR}/data/hooks:/pb_hooks
+      - ${APP_DATA_DIR}/data/migrations:/pb_migrations
+
+  slot46:
+    image: ghcr.io/muchobien/pocketbase:0.39.6
+    restart: unless-stopped
+    stop_grace_period: 1m
+    environment:
+      LABTAKE_SLOT_KEY: ${APP_SEED}
+    volumes:
+      - ${APP_DATA_DIR}/data/slots/46:/pb_data
+      - ${APP_DATA_DIR}/data/public:/pb_public
+      - ${APP_DATA_DIR}/data/hooks:/pb_hooks
+      - ${APP_DATA_DIR}/data/migrations:/pb_migrations
+
+  slot47:
+    image: ghcr.io/muchobien/pocketbase:0.39.6
+    restart: unless-stopped
+    stop_grace_period: 1m
+    environment:
+      LABTAKE_SLOT_KEY: ${APP_SEED}
+    volumes:
+      - ${APP_DATA_DIR}/data/slots/47:/pb_data
+      - ${APP_DATA_DIR}/data/public:/pb_public
+      - ${APP_DATA_DIR}/data/hooks:/pb_hooks
+      - ${APP_DATA_DIR}/data/migrations:/pb_migrations
+
+  slot48:
+    image: ghcr.io/muchobien/pocketbase:0.39.6
+    restart: unless-stopped
+    stop_grace_period: 1m
+    environment:
+      LABTAKE_SLOT_KEY: ${APP_SEED}
+    volumes:
+      - ${APP_DATA_DIR}/data/slots/48:/pb_data
+      - ${APP_DATA_DIR}/data/public:/pb_public
+      - ${APP_DATA_DIR}/data/hooks:/pb_hooks
+      - ${APP_DATA_DIR}/data/migrations:/pb_migrations
+
+  slot49:
+    image: ghcr.io/muchobien/pocketbase:0.39.6
+    restart: unless-stopped
+    stop_grace_period: 1m
+    environment:
+      LABTAKE_SLOT_KEY: ${APP_SEED}
+    volumes:
+      - ${APP_DATA_DIR}/data/slots/49:/pb_data
+      - ${APP_DATA_DIR}/data/public:/pb_public
+      - ${APP_DATA_DIR}/data/hooks:/pb_hooks
+      - ${APP_DATA_DIR}/data/migrations:/pb_migrations
+
+  slot50:
+    image: ghcr.io/muchobien/pocketbase:0.39.6
+    restart: unless-stopped
+    stop_grace_period: 1m
+    environment:
+      LABTAKE_SLOT_KEY: ${APP_SEED}
+    volumes:
+      - ${APP_DATA_DIR}/data/slots/50:/pb_data
       - ${APP_DATA_DIR}/data/public:/pb_public
       - ${APP_DATA_DIR}/data/hooks:/pb_hooks
       - ${APP_DATA_DIR}/data/migrations:/pb_migrations
