@@ -12,12 +12,6 @@ description: >-
 
   Simulates real data with a nightly reset at 3 a.m.
 
-
-  50 copies of the demo: each visitor gets a copy of their own, and once all
-  50 are taken each copy is shared by up to 5 people, so about 250 people
-  can try it at once
-  
-
 developer: Rotowaxer
 website: https://pocketbase.io/
 submitter: Rotowaxer
