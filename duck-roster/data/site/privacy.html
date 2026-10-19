@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy policy — Roster Sync</title>
+<meta name="description" content="What Roster Sync reads, where it sends it, and how to stop it.">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%231f6f5c'/%3E%3Cpath fill='%23f2c14e' d='M6 18H26A10 7.5 0 0 1 6 18ZM6 18 4.5 12.5 11 18Z'/%3E%3Ccircle fill='%23f2c14e' cx='21' cy='13' r='5'/%3E%3Cpath fill='%23e8833a' d='M25.5 12 29.5 13.5 25.5 15Z'/%3E%3Ccircle fill='%231d2b26' cx='22.2' cy='11.8' r='1.1'/%3E%3C/svg%3E">
+<style>
+:root{color-scheme:light dark;--bg:#fbf6ec;--surface:#fffdf9;--text:#2a2620;--muted:#5e564a;--border:#e3d8c3;--link:#1f6f5c;--focus:#1f6f5c;
+  --round:ui-rounded,"SF Pro Rounded","Segoe UI Variable Display","Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif;
+  --sans:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+@media (prefers-color-scheme:dark){:root{--bg:#1a1712;--surface:#2a251e;--text:#f3ede2;--muted:#c4b9a6;--border:#3d362b;--link:#7fd6bd;--focus:#f2c14e}}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:400 1.0625rem/1.65 var(--sans);-webkit-font-smoothing:antialiased}
+main,header,footer{max-width:760px;margin-inline:auto;padding-inline:clamp(16px,4vw,32px)}
+header{padding-block:14px}
+.brand{display:inline-flex;align-items:center;gap:10px;min-height:44px;color:var(--text);text-decoration:none;font:800 1.15rem/1.1 var(--round)}
+.mark{display:grid;place-items:center;width:40px;height:40px;border-radius:12px;background:#1f6f5c}
+h1,h2{font-family:var(--round);line-height:1.2;letter-spacing:-.01em}
+h1{font-size:clamp(2rem,5vw,2.8rem);margin:24px 0 8px}
+h2{font-size:1.35rem;margin:36px 0 8px}
+p,ul{margin:0 0 1em}
+ul{padding-left:1.3em}
+li{margin-bottom:.4em}
+a{color:var(--link);text-underline-offset:.18em}
+:focus-visible{outline:3px solid var(--focus);outline-offset:3px;border-radius:6px}
+.muted{color:var(--muted)}
+.box{padding:18px 20px;border:1px solid var(--border);border-radius:18px;background:var(--surface)}
+footer{padding-block:40px 48px;font-size:.92rem;color:var(--muted)}
+</style>
+</head>
+<body>
+<header><a class="brand" href="/"><span class="mark"><svg width="30" height="30" viewBox="0 0 32 32" aria-hidden="true"><path fill="#f2c14e" d="M6 18H26A10 7.5 0 0 1 6 18ZM6 18 4.5 12.5 11 18Z"/><circle fill="#f2c14e" cx="21" cy="13" r="5"/><path fill="#e8833a" d="M25.5 12 29.5 13.5 25.5 15Z"/><circle fill="#1d2b26" cx="22.2" cy="11.8" r="1.1"/></svg></span>Roster Sync</a></header>
+<main>
+<h1>Privacy policy</h1>
+<p class="muted">Effective 20 October 2026</p>
+
+<p class="box">In short: Roster Sync reads the shifts on your own roster page and writes them into a <b>Work roster</b> calendar in your own Google account. Nothing goes to us or anyone else. There are no ads, no analytics and no tracking.</p>
+
+<h2>Who we are</h2>
+<p>Roster Sync is a free browser extension made by an individual developer at ducktake.com. It is an independent project, not affiliated with or endorsed by NSW Health, NSW Health Pathology, Allocate or RLDatix. Questions: <a href="mailto:hello@ducktake.com">hello@ducktake.com</a>.</p>
+
+<h2>What the extension reads</h2>
+<ul>
+  <li>It runs only on the Employee Online roster site (patheol.ros.health.nsw.gov.au).</li>
+  <li>On that site it reads the month shown in the date box and the text of the shifts in your roster grid, for example "D 08:30 - 17:00 @ Biochem".</li>
+  <li>It never reads or stores your Employee Online username or password, and it reads no other website.</li>
+</ul>
+
+<h2>Where your shifts go</h2>
+<ul>
+  <li>Your shifts (date, start and end time, shift code and department) are sent over HTTPS from your browser straight to the Google Calendar API, into a calendar named Work roster in your own Google account.</li>
+  <li>They are not sent to ducktake.com or to any other server, and we cannot see them.</li>
+  <li>If you use the "Download this month (.ics)" button, the file is made inside your browser and saved to your computer.</li>
+</ul>
+
+<h2>Google account access</h2>
+<ul>
+  <li>When you click Connect, Google asks you to allow one permission: <i>"Make secondary Google calendars, and see, create, change, and delete events on them"</i> (the <code>calendar.app.created</code> scope). It covers only calendars that Roster Sync itself creates. Roster Sync cannot see your other calendars, email, contacts or files.</li>
+  <li>Google gives the extension an access token that lasts about an hour. It is kept in your browser's memory, is used only to call Google Calendar, and is never sent anywhere else.</li>
+  <li>Roster Sync's use and transfer to any other app of information received from Google APIs will adhere to the <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>, including the Limited Use requirements.</li>
+  <li>We do not sell this information, use it for advertising, or let any person read it.</li>
+</ul>
+
+<h2>What is stored on your computer</h2>
+<p>In the browser's extension storage: the ID of your Work roster calendar, the time and size of the last sync, whether automatic sync is on, and whether you disconnected. Removing the extension deletes all of it.</p>
+
+<h2>This website</h2>
+<p>roster.ducktake.com is a plain information page. It sets no cookies and runs no analytics. It is served through Cloudflare, which processes standard connection data such as IP addresses to deliver the page and protect it from abuse.</p>
+
+<h2>Your choices</h2>
+<ul>
+  <li><b>Pause:</b> untick automatic sync in the Roster Sync toolbar popup.</li>
+  <li><b>Disconnect:</b> click Disconnect in the popup. This revokes Roster Sync's access to your Google account. You can also remove access at <a href="https://myaccount.google.com/permissions">myaccount.google.com/permissions</a>.</li>
+  <li><b>Delete your data:</b> delete the Work roster calendar in Google Calendar settings and remove the extension from your browser.</li>
+</ul>
+
+<h2>Changes</h2>
+<p>If this policy changes, the new version will be posted here with a new effective date.</p>
+</main>
+<footer><a href="/">Back to Roster Sync</a> · Not affiliated with or endorsed by NSW Health, NSW Health Pathology, Allocate or RLDatix.</footer>
+</body>
+</html>

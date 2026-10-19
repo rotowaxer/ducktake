@@ -1,0 +1,23 @@
+manifestVersion: 1.0.0
+id: duck-roster
+icon: https://raw.githubusercontent.com/rotowaxer/ducktake/main/duck-roster/icon.svg
+name: Roster Sync site
+tagline: Install page for the Roster Sync calendar add-on
+category: developer
+version: "1"
+port: 18097
+description: >-
+  The public roster.ducktake.com page for the Roster Sync browser extension: install links,
+  calendar set-up help and the privacy policy. Plain static files served by nginx.
+
+developer: Rotowaxer
+website: https://roster.ducktake.com/
+submitter: Rotowaxer
+support: mailto:hello@ducktake.com
+repo: ""
+gallery: []
+path: /
+dependencies: []
+defaultUsername: ""
+defaultPassword: ""
+releaseNotes: ""

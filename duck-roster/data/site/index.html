@@ -1,0 +1,456 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Roster Sync — your roster in your calendar</title>
+<meta name="description" content="Roster Sync is a free browser add-on that keeps your Employee Online shifts in your own Google, Apple or Outlook calendar, automatically. Made by a coworker, for coworkers.">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#fbf6ec" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1a1712" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Roster Sync — your roster in your calendar">
+<meta property="og:description" content="Your Employee Online shifts in your own Google, Apple or Outlook calendar, kept up to date automatically. Free, no ads, no tracking.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%231f6f5c'/%3E%3Cpath fill='%23f2c14e' d='M6 18H26A10 7.5 0 0 1 6 18ZM6 18 4.5 12.5 11 18Z'/%3E%3Ccircle fill='%23f2c14e' cx='21' cy='13' r='5'/%3E%3Cpath fill='%23e8833a' d='M25.5 12 29.5 13.5 25.5 15Z'/%3E%3Ccircle fill='%231d2b26' cx='22.2' cy='11.8' r='1.1'/%3E%3C/svg%3E">
+<style>
+:root{
+  color-scheme:light dark;
+  --bg:#fbf6ec;--bg-alt:#f4ecdc;--surface:#fffdf9;--text:#2a2620;--muted:#5e564a;--border:#e3d8c3;
+  --primary:#1f6f5c;--primary-hover:#185a4a;--on-primary:#fff;--link:#1f6f5c;--focus:#1f6f5c;
+  --accent:#f2c14e;--hl:#f5cf63;--glow:rgb(242 193 78/.24);
+  --t-bg:#dcefe8;--t-fg:#17594a;--y-bg:#fbe7b0;--y-fg:#5a4300;--p-bg:#f8d9c4;--p-fg:#6b3412;
+  --n-bg:#2f3a56;--n-fg:#fff;--l-bg:#e5dcf3;--l-fg:#46336b;--s-bg:#ece4d4;--s-fg:#4d4536;
+  --band:#1f6f5c;--on-band:#fff;--frame:#2a2620;--pill:#24211c;--on-pill:#fff;
+  --shadow:0 1px 2px rgb(60 45 20/.06),0 18px 40px -18px rgb(60 45 20/.35);
+  --cb:var(--t-bg);--cf:var(--t-fg);
+  --round:ui-rounded,"SF Pro Rounded","Segoe UI Variable Display","Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif;
+  --sans:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --mono:ui-monospace,"SF Mono","Cascadia Mono",Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root{
+  --bg:#1a1712;--bg-alt:#221e18;--surface:#2a251e;--text:#f3ede2;--muted:#c4b9a6;--border:#3d362b;
+  --primary:#5fc4a8;--primary-hover:#7fd6bd;--on-primary:#10241e;--link:#7fd6bd;--focus:#f2c14e;
+  --hl:#7a5c12;--glow:rgb(95 196 168/.1);
+  --t-bg:#1d3a33;--t-fg:#a7e3d1;--y-bg:#43361a;--y-fg:#f5d88a;--p-bg:#4d2f1d;--p-fg:#f5c8a8;
+  --n-bg:#3b4a75;--n-fg:#eef1ff;--l-bg:#3b2f52;--l-fg:#dccdf5;--s-bg:#3a342a;--s-fg:#ddd2bf;
+  --band:#173d34;--on-band:#eef6f2;--frame:#4a4337;--pill:#0f0e0b;--on-pill:#f3ede2;
+  --shadow:0 1px 2px rgb(0 0 0/.3),0 18px 40px -18px rgb(0 0 0/.75);
+}}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font:400 1.0625rem/1.6 var(--sans);-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:var(--round);line-height:1.15;margin:0 0 .5em;letter-spacing:-.01em;text-wrap:balance}
+h1{font-size:clamp(2.25rem,6vw,3.6rem);font-weight:800;letter-spacing:-.02em}
+h2{font-size:clamp(1.75rem,3.6vw,2.4rem);font-weight:750}
+h3{font-size:1.2rem;font-weight:700}
+p{margin:0 0 1em}
+ul,ol{margin:0;padding:0;list-style:none}
+a{color:var(--link);text-underline-offset:.18em;text-decoration-thickness:.08em}
+a:hover{text-decoration-thickness:.14em}
+:focus-visible{outline:3px solid var(--focus);outline-offset:3px;border-radius:6px}
+[hidden]{display:none!important}
+.wrap{max-width:1120px;margin-inline:auto;padding-inline:clamp(16px,4vw,32px)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.ico{width:1.25em;height:1.25em;flex:none;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.skip{position:absolute;left:16px;top:-80px;z-index:10;background:var(--surface);color:var(--text);padding:12px 18px;border-radius:12px;font-weight:700;box-shadow:var(--shadow)}
+.skip:focus{top:12px}
+
+/* colour pairs, shared by roster chips, events, tags and icons */
+.teal{--cb:var(--t-bg);--cf:var(--t-fg)}
+.yellow{--cb:var(--y-bg);--cf:var(--y-fg)}
+.peach{--cb:var(--p-bg);--cf:var(--p-fg)}
+.navy{--cb:var(--n-bg);--cf:var(--n-fg)}
+.lilac{--cb:var(--l-bg);--cf:var(--l-fg)}
+.sand{--cb:var(--s-bg);--cf:var(--s-fg)}
+.grid i,.ev,.tag,.cal-ico,.eyebrow{background:var(--cb);color:var(--cf)}
+
+/* header */
+.head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:14px}
+.brand{display:flex;align-items:center;gap:10px;min-height:44px;color:var(--text);text-decoration:none;font:800 1.15rem/1.1 var(--round)}
+.brand small{display:block;font:500 .78rem/1.3 var(--sans);color:var(--muted)}
+.mark{display:grid;place-items:center;flex:none;width:40px;height:40px;border-radius:12px;background:#1f6f5c}
+.mark svg{width:30px;height:30px}
+.mark.sm{width:32px;height:32px;border-radius:10px}
+.mark.sm svg{width:24px;height:24px}
+.nav{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:2px}
+.nav a{display:inline-flex;align-items:center;min-height:44px;padding:8px 12px;border-radius:999px;color:var(--text);text-decoration:none;font-weight:600;font-size:.95rem}
+.nav a:hover{background:var(--bg-alt)}
+@media (max-width:560px){.nav a:nth-child(-n+2){display:none}}
+
+/* hero */
+.hero{position:relative;overflow:hidden;padding:clamp(16px,4vw,48px) 0 104px;background:radial-gradient(640px 420px at 82% 28%,var(--glow),transparent 70%)}
+.hero-grid{display:grid;gap:56px;align-items:center}
+@media (min-width:1080px){.hero-grid{grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:48px}}
+.eyebrow{display:inline-block;margin-bottom:18px;padding:6px 14px;border-radius:999px;font-weight:650;font-size:.88rem}
+.hl{background:linear-gradient(transparent 60%,var(--hl) 60% 90%,transparent 90%);-webkit-box-decoration-break:clone;box-decoration-break:clone;padding-inline:.06em}
+.lede{font-size:clamp(1.08rem,1.6vw,1.22rem);color:var(--muted);max-width:34em}
+.install{margin:28px 0 20px}
+.btn-big{display:inline-flex;align-items:center;gap:12px;min-height:60px;padding:16px 30px 16px 24px;border-radius:999px;background:var(--primary);color:var(--on-primary);text-decoration:none;font:700 1.15rem/1.2 var(--round);box-shadow:0 12px 26px -12px rgb(31 111 92/.75)}
+.btn-big:hover{background:var(--primary-hover)}
+.btn-big .ico{width:24px;height:24px;stroke-width:2.6}
+.stores{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:0}
+.stores span{flex-basis:100%;font-weight:600}
+.stores a{display:inline-flex;align-items:center;min-height:48px;padding:10px 24px;border-radius:999px;background:var(--primary);color:var(--on-primary);font-weight:700;text-decoration:none}
+.stores a:hover{background:var(--primary-hover)}
+.picked .stores{gap:0;margin-top:10px;color:var(--muted);font-size:.95rem}
+.picked .stores span{flex-basis:auto;font-weight:400;margin-right:4px}
+.picked .stores a{position:relative;min-height:44px;padding:8px 6px;background:none;color:var(--link);font-weight:600;text-decoration:underline}
+.picked .stores a+a{margin-left:14px}
+.picked .stores a+a::before{content:"·";content:"·"/"";position:absolute;left:-12px;color:var(--muted)}
+.note{display:flex;gap:12px;align-items:flex-start;max-width:31em;margin:0;padding:14px 18px;border-radius:16px;background:var(--y-bg);color:var(--y-fg);font-weight:500}
+.note .ico{margin-top:2px}
+.made{margin:0;font-size:.92rem;color:var(--muted)}
+
+/* hero picture: roster + toast + phone */
+.shot{display:grid;grid-template-columns:minmax(0,1fr) 20px 180px;grid-template-rows:32px auto auto;width:100%;max-width:580px;margin-inline:auto}
+.roster{grid-area:1/1/3/3;align-self:start;position:relative;padding-bottom:44px;background:var(--surface);border:1px solid var(--border);border-radius:20px;box-shadow:var(--shadow)}
+.bar{display:flex;align-items:center;gap:6px;padding:12px 16px;border-bottom:1px solid var(--border);font-size:.8rem;font-weight:650;color:var(--muted)}
+.bar i{width:10px;height:10px;border-radius:50%;background:var(--border)}
+.bar span{margin-left:8px}
+.grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px;padding:12px}
+.grid b{padding-bottom:2px;text-align:center;font-size:.64rem;font-weight:650;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
+.grid span{display:flex;flex-direction:column;justify-content:space-between;gap:4px;min-height:48px;padding:4px;border-radius:8px;background:var(--bg);font-size:.68rem;line-height:1;color:var(--muted)}
+.grid i{padding:4px 0;border-radius:5px;text-align:center;font:normal 700 .66rem/1 var(--sans)}
+.grid .off{background:none;border:1px dashed var(--border);color:var(--muted);font-weight:500}
+.pill{position:absolute;left:-14px;bottom:-22px;z-index:2;white-space:nowrap;display:flex;align-items:center;gap:10px;padding:10px 16px 10px 12px;border-radius:20px;background:var(--pill);color:var(--on-pill);border:1px solid rgb(255 255 255/.08);font-size:.82rem;font-weight:600;line-height:1.35;box-shadow:0 14px 30px -12px rgb(0 0 0/.5)}
+.pill .ico{color:var(--accent);stroke-width:3}
+.again{margin-left:8px;padding:4px 10px;border-radius:999px;background:var(--accent);color:#2a2620;font-weight:700;white-space:nowrap}
+.phone{grid-area:2/2/4/4;z-index:1;align-self:start;position:relative;aspect-ratio:1/1.8;padding:24px 10px 12px;background:var(--surface);border:7px solid var(--frame);border-radius:32px;box-shadow:var(--shadow);font-size:.68rem;line-height:1.3}
+.phone::before{content:"";position:absolute;top:7px;left:50%;width:44px;height:5px;margin-left:-22px;border-radius:9px;background:var(--frame)}
+.ph-head{display:flex;justify-content:space-between;align-items:center;margin:0 2px 10px;font-size:.8rem}
+.ph-head span{display:flex;align-items:center;gap:4px;font-size:.64rem;color:var(--muted)}
+.ph-head i{width:7px;height:7px;border-radius:50%;background:var(--primary)}
+.phone ul{display:grid;gap:8px}
+.phone li{display:grid;grid-template-columns:28px minmax(0,1fr);gap:6px;align-items:start}
+.phone li>span:first-child{text-align:center;font-size:.6rem;text-transform:uppercase;color:var(--muted)}
+.phone li>span:first-child b{display:block;font-size:.95rem;text-transform:none;color:var(--text)}
+.phone .ev{padding:5px 7px;border-left-width:3px;border-radius:6px}
+@media (max-width:599px){
+  .shot{display:block;padding-bottom:28px}
+  .phone{display:none}
+  .pill{left:12px;right:12px;white-space:normal}
+}
+.swim{position:absolute;left:7%;bottom:15px;width:46px;height:46px}
+.wave{position:absolute;left:0;bottom:-1px;z-index:1;display:block;width:100%;height:40px;fill:var(--bg-alt)}
+
+/* sections */
+.sec{padding-block:clamp(56px,8vw,96px)}
+.alt{background:var(--bg-alt)}
+.sub{max-width:38em;margin:0;font-size:1.1rem;color:var(--muted)}
+.card{padding:26px 24px;background:var(--surface);border:1px solid var(--border);border-radius:22px}
+.card p{margin:0;color:var(--muted)}
+.steps,.cals{display:grid;gap:20px;margin-top:36px;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr))}
+.num{display:grid;place-items:center;width:44px;height:44px;margin-bottom:16px;border-radius:50%;background:var(--accent);color:#2a2620;font:800 1.2rem/1 var(--round)}
+.keeps{display:grid;gap:20px;margin-top:20px;padding:clamp(22px,4vw,36px);border-radius:22px;background:var(--t-bg)}
+.keeps p{margin:0;color:var(--muted)}
+.keeps ul{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(min(100%,170px),1fr))}
+.keeps li{display:flex;align-items:center;gap:10px;padding:12px 14px;border-radius:14px;background:var(--surface);font-weight:600}
+.keeps li .ico{color:var(--primary)}
+@media (min-width:860px){.keeps{grid-template-columns:1fr 1.4fr;align-items:center}}
+.cal-ico{display:grid;place-items:center;width:48px;height:48px;margin-bottom:16px;border-radius:14px}
+.cal-ico .ico{width:24px;height:24px}
+.card .tag{display:inline-block;margin:0 0 12px;padding:4px 10px;border-radius:10px;font-size:.82rem;font-weight:700;color:var(--cf)}
+.how-to ol{display:grid;gap:10px;padding-left:1.3em;list-style:decimal;color:var(--muted)}
+.how-to li::marker{color:var(--primary);font-weight:700}
+.honest{display:flex;gap:14px;align-items:flex-start;max-width:860px;margin:24px 0 0;padding:18px 20px;border:2px dashed var(--border);border-radius:18px;color:var(--muted)}
+.honest .ico{margin-top:3px;color:var(--primary)}
+.honest b{color:var(--text)}
+
+/* roster -> calendar */
+.map{display:grid;gap:12px;max-width:860px;margin-top:32px}
+.map li{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1.1fr);align-items:center;gap:16px;padding:14px;background:var(--surface);border:1px solid var(--border);border-radius:18px}
+.map code{justify-self:start;padding:8px 12px;border-radius:10px;background:var(--bg);border:1px solid var(--border);font:600 .95rem/1.4 var(--mono);overflow-wrap:anywhere}
+.arrow{width:24px;height:24px;color:var(--primary)}
+.ev{display:flex;flex-direction:column;align-items:flex-start;gap:2px;padding:10px 14px;border-left:5px solid currentColor;border-radius:8px;line-height:1.3}
+.ev small{margin-top:4px;padding:2px 9px;border-radius:999px;background:var(--accent);color:#2a2620;font-size:.78rem;font-weight:650}
+.ev.dayoff{background:none;border:2px dashed var(--border);color:var(--muted)}
+.map-note{max-width:40em;margin:20px 0 0;color:var(--muted)}
+@media (max-width:640px){.map li{grid-template-columns:1fr;gap:8px}.arrow{transform:rotate(90deg)}}
+
+/* privacy */
+.band{--focus:#f2c14e;--link:var(--on-band);background:var(--band);color:var(--on-band)}
+.band-grid{display:grid;gap:32px 64px;align-items:start}
+@media (min-width:860px){.band-grid{grid-template-columns:.9fr 1.1fr}}
+.checks{display:grid;gap:14px}
+.checks li{display:flex;gap:14px;align-items:flex-start;font-size:1.08rem;font-weight:500}
+.checks .ico{width:26px;height:26px;color:#f2c14e;stroke-width:2.6}
+.out{display:inline-flex;align-items:center;min-height:48px;padding:10px 22px;border:2px solid currentColor;border-radius:999px;color:var(--on-band);font-weight:700;text-decoration:none}
+.out:hover{background:rgb(255 255 255/.1)}
+
+/* faq */
+.faq{max-width:780px;margin-top:28px;border-top:1px solid var(--border)}
+.faq details{border-bottom:1px solid var(--border)}
+.faq summary{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:60px;padding:14px 4px;cursor:pointer;list-style:none;font:700 1.1rem/1.35 var(--round)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"";flex:none;width:10px;height:10px;margin:0 8px 4px 0;border:solid var(--primary);border-width:0 3px 3px 0;transform:rotate(45deg)}
+.faq [open] summary::after{transform:rotate(225deg);margin-bottom:-4px}
+.faq details p{max-width:40em;padding:0 4px 10px;color:var(--muted)}
+
+/* footer */
+.foot{padding:40px 0 48px;background:var(--bg-alt);font-size:.92rem;color:var(--muted)}
+.foot-row{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 24px;margin-bottom:16px}
+.foot-brand{display:flex;align-items:center;gap:10px;margin:0;color:var(--text);font-weight:700}
+.foot-brand span:last-child{font-weight:400;color:var(--muted)}
+.foot nav{display:flex;flex-wrap:wrap;gap:4px 20px}
+.foot nav a{display:inline-flex;align-items:center;min-height:44px;font-weight:600}
+.foot p:last-child{max-width:52em;margin:0}
+
+@media (prefers-reduced-motion:no-preference){
+  html{scroll-behavior:smooth}
+  .pill{animation:pop .6s cubic-bezier(.2,.9,.3,1.25) .5s both}
+  .swim{animation:bob 5s ease-in-out infinite}
+  .btn-big,.stores a{transition:background-color .15s,transform .15s}
+  .btn-big:hover{transform:translateY(-1px)}
+}
+@keyframes pop{from{opacity:0;transform:translateY(10px) scale(.96)}}
+@keyframes bob{50%{transform:translateY(2px) rotate(-3deg)}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="duck" viewBox="0 0 32 32">
+    <path fill="#f2c14e" d="M6 18H26A10 7.5 0 0 1 6 18ZM6 18 4.5 12.5 11 18Z"/>
+    <circle fill="#f2c14e" cx="21" cy="13" r="5"/>
+    <path fill="#e8833a" d="M25.5 12 29.5 13.5 25.5 15Z"/>
+    <circle fill="#1d2b26" cx="22.2" cy="11.8" r="1.1"/>
+    <path fill="none" stroke="#c9952a" stroke-width="1.4" stroke-linecap="round" d="M11 20.5q4 3 8 0"/>
+  </symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="i-minus" viewBox="0 0 24 24"><path d="M5 12h14"/></symbol>
+  <symbol id="i-sync" viewBox="0 0 24 24"><path d="M4.5 10a8 8 0 0 1 14-3.2L20 8.5M20 4v4.5h-4.5M19.5 14a8 8 0 0 1-14 3.2L4 15.5M4 20v-4.5h4.5"/></symbol>
+  <symbol id="i-link" viewBox="0 0 24 24"><path d="M10 14a4.2 4.2 0 0 0 6 0l3-3a4.2 4.2 0 0 0-6-6l-1 1M14 10a4.2 4.2 0 0 0-6 0l-3 3a4.2 4.2 0 0 0 6 6l1-1"/></symbol>
+  <symbol id="i-dl" viewBox="0 0 24 24"><path d="M12 4v11M7.5 10.5 12 15l4.5-4.5M5 19.5h14"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+  <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5.5M12 7.5v.5"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></symbol>
+</svg>
+
+<a class="skip" href="#main">Skip to main content</a>
+
+<header class="wrap head">
+  <a class="brand" href="/"><span class="mark"><svg aria-hidden="true"><use href="#duck"/></svg></span><span>Roster Sync<small>by ducktake</small></span></a>
+  <nav class="nav" aria-label="Main">
+    <a href="#how">How it works</a><a href="#calendars">Calendars</a><a href="#privacy">Privacy</a><a href="#faq">FAQ</a>
+  </nav>
+</header>
+
+<main id="main">
+<section class="hero" aria-labelledby="hero-h">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">Free add-on for your Employee Online roster</p>
+      <h1 id="hero-h">Your roster, in your calendar. <span class="hl">Automatically.</span></h1>
+      <p class="lede">Roster Sync puts your shifts into the calendar you already use, so they're on your phone and watch too. Connect it once, and every time you open your roster it brings your calendar up to date by itself.</p>
+      <div class="install" id="install">
+        <a class="btn-big" id="main-btn" href="#chrome-store-link" hidden><svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg><span>Add to Chrome — it's free</span></a>
+        <p class="note" id="note" hidden><svg class="ico" aria-hidden="true"><use href="#i-info"/></svg><span>Open this page on a computer in Chrome, Edge or Firefox to install. Your phone will get the shifts through its calendar.</span></p>
+        <p class="stores"><span id="stores-label">Add it to your browser — it's free:</span>
+          <a href="#chrome-store-link" data-store="chrome">Chrome</a>
+          <a href="#edge-store-link" data-store="edge">Edge</a>
+          <a href="#firefox-store-link" data-store="firefox">Firefox</a>
+        </p>
+      </div>
+      <p class="made">Made by a coworker, for coworkers. No ads, no catch.</p>
+    </div>
+
+    <div class="shot" role="img" aria-label="Example: a four-week roster from 2 to 29 November with 21 shifts and 7 days off. A panel on the roster reads: 21 shifts synced, 9:41 am, Sync again. Beside it, a phone calendar shows the same shifts, starting with a day shift in Biochem on Monday 2 November.">
+      <div class="roster">
+        <div class="bar"><i></i><i></i><i></i><span>My roster · 2–29 Nov</span></div>
+        <div class="grid">
+          <b>Mon</b><b>Tue</b><b>Wed</b><b>Thu</b><b>Fri</b><b>Sat</b><b>Sun</b>
+          <span>2<i class="teal">D</i></span><span>3<i class="yellow">A</i></span><span>4<i class="peach">P</i></span><span>5<i class="off">DO</i></span><span>6<i class="navy">N</i></span><span>7<i class="navy">N</i></span><span>8<i class="off">DO</i></span>
+          <span>9<i class="off">DO</i></span><span>10<i class="teal">D</i></span><span>11<i class="teal">D</i></span><span>12<i class="lilac">OC</i></span><span>13<i class="teal">D</i></span><span>14<i class="off">DO</i></span><span>15<i class="off">DO</i></span>
+          <span>16<i class="sand">ADO</i></span><span>17<i class="yellow">A</i></span><span>18<i class="yellow">A</i></span><span>19<i class="peach">P</i></span><span>20<i class="peach">P</i></span><span>21<i class="off">DO</i></span><span>22<i class="lilac">OC</i></span>
+          <span>23<i class="teal">D</i></span><span>24<i class="teal">D</i></span><span>25<i class="yellow">A</i></span><span>26<i class="navy">N</i></span><span>27<i class="navy">N</i></span><span>28<i class="navy">N</i></span><span>29<i class="off">DO</i></span>
+        </div>
+        <div class="pill"><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span>21 shifts synced · 9:41 am <span class="again">Sync again</span></span></div>
+      </div>
+      <div class="phone">
+        <p class="ph-head"><b>November</b><span><i></i>Work roster</span></p>
+        <ul>
+          <li><span>Mon<b>2</b></span><span class="ev teal"><b>Day shift · Biochem</b>8:30 am – 5:00 pm</span></li>
+          <li><span>Tue<b>3</b></span><span class="ev yellow"><b>Early shift</b>6:30 am – 3:00 pm</span></li>
+          <li><span>Wed<b>4</b></span><span class="ev peach"><b>Late shift</b>3:00 pm – 11:30 pm</span></li>
+          <li><span>Fri<b>6</b></span><span class="ev navy"><b>Night shift</b>11:00 pm – 7:00 am</span></li>
+          <li><span>Sat<b>7</b></span><span class="ev navy"><b>Night shift</b>11:00 pm – 7:00 am</span></li>
+          <li><span>Tue<b>10</b></span><span class="ev teal"><b>Day shift</b>8:30 am – 5:00 pm</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <svg class="swim" aria-hidden="true"><use href="#duck"/></svg>
+  <svg class="wave" viewBox="0 0 1440 48" preserveAspectRatio="none" aria-hidden="true"><path d="M0 24C120 8 240 8 360 24S600 40 720 24 960 8 1080 24 1320 40 1440 24V48H0Z"/></svg>
+</section>
+
+<section id="how" class="sec alt" aria-labelledby="how-h">
+  <div class="wrap">
+    <h2 id="how-h">How it works</h2>
+    <p class="sub">Three steps, and you only do them once.</p>
+    <ol class="steps">
+      <li class="card"><span class="num" aria-hidden="true">1</span><h3>Add to your browser</h3><p>Install Roster Sync from the Chrome, Edge or Firefox add-on store in one click. It's free.</p></li>
+      <li class="card"><span class="num" aria-hidden="true">2</span><h3>Open your roster in Employee Online</h3><p>Sign in the way you always do and open the month view. A small Sync panel appears at the bottom right.</p></li>
+      <li class="card"><span class="num" aria-hidden="true">3</span><h3>Connect your calendar once</h3><p>Click <b>Connect Google Calendar</b> on the Sync panel and approve. That's all the setup there is.</p></li>
+    </ol>
+    <div class="keeps">
+      <div>
+        <h3>Then it just keeps up</h3>
+        <p>Every time you open your roster, Roster Sync checks it against your calendar by itself. It only ever touches its own <b>Work roster</b> calendar, and days off are skipped.</p>
+      </div>
+      <ul>
+        <li><svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg>New shifts are added</li>
+        <li><svg class="ico" aria-hidden="true"><use href="#i-sync"/></svg>Changed shifts are updated</li>
+        <li><svg class="ico" aria-hidden="true"><use href="#i-minus"/></svg>Removed shifts are deleted</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="calendars" class="sec" aria-labelledby="cal-h">
+  <div class="wrap">
+    <h2 id="cal-h">Works with the calendar you already use</h2>
+    <p class="sub">Roster Sync keeps a <b>Work roster</b> calendar in your Google account. Your phone, watch, Apple Calendar or Outlook then show it like any other calendar.</p>
+    <ul class="cals">
+      <li class="card">
+        <span class="cal-ico teal"><svg class="ico" aria-hidden="true"><use href="#i-sync"/></svg></span>
+        <h3>Google Calendar</h3>
+        <p class="tag teal">Updates within seconds</p>
+        <p>The direct sync. Connect once from the Sync panel. A free Google account is all you need, even one you only use for this.</p>
+      </li>
+      <li class="card">
+        <span class="cal-ico yellow"><svg class="ico" aria-hidden="true"><use href="#i-link"/></svg></span>
+        <h3>Apple Calendar</h3>
+        <p class="tag yellow">Updates by itself</p>
+        <p>iPhone, iPad and Mac. Add your Google account to Apple Calendar once and Work roster appears next to your other calendars.</p>
+      </li>
+      <li class="card">
+        <span class="cal-ico yellow"><svg class="ico" aria-hidden="true"><use href="#i-link"/></svg></span>
+        <h3>Outlook</h3>
+        <p class="tag yellow">Updates by itself</p>
+        <p>Outlook on the web and Outlook.com can show your Google calendar too, at work or at home. Steps below.</p>
+      </li>
+      <li class="card">
+        <span class="cal-ico sand"><svg class="ico" aria-hidden="true"><use href="#i-dl"/></svg></span>
+        <h3>Anything else</h3>
+        <p class="tag sand">One-off file</p>
+        <p>Click the Roster Sync toolbar button and download the month as an .ics file. It's a snapshot, so it won't update by itself.</p>
+      </li>
+    </ul>
+    <div class="steps how-to">
+      <div class="card" id="apple">
+        <h3>Set up iPhone, iPad or Mac</h3>
+        <ol>
+          <li>iPhone or iPad: open <b>Settings → Apps → Calendar → Calendar Accounts → Add Account → Google</b> (older iOS: Settings → Calendar → Accounts).</li>
+          <li>Mac: open <b>Calendar → Settings → Accounts</b>, click <b>+</b> and choose <b>Google</b>.</li>
+          <li>Sign in with the Google account you connected, and leave <b>Calendars</b> switched on.</li>
+          <li>No Work roster? Tick it at <a href="https://www.google.com/calendar/syncselect" rel="noopener">google.com/calendar/syncselect</a>.</li>
+        </ol>
+      </div>
+      <div class="card" id="outlook">
+        <h3>Set up Outlook</h3>
+        <ol>
+          <li>Outlook on the web or Outlook.com: open the calendar and choose <b>Add calendar → Add personal calendars → Google</b>. This updates by itself.</li>
+          <li>If that option is missing: in Google Calendar open <b>Settings → Work roster → Integrate calendar</b> and copy the <b>Secret address in iCal format</b>.</li>
+          <li>In Outlook choose <b>Add calendar → Subscribe from web</b> and paste it. Outlook checks it every few hours.</li>
+        </ol>
+      </div>
+    </div>
+    <p class="honest"><svg class="ico" aria-hidden="true"><use href="#i-info"/></svg><span><b>Keep the secret address to yourself.</b> Anyone who has it can see your shifts. If it ever gets out, click <b>Reset</b> next to it in Google Calendar. Roster Sync never sees your Apple or Microsoft account.</span></p>
+  </div>
+</section>
+
+<section id="mapping" class="sec alt" aria-labelledby="map-h">
+  <div class="wrap">
+    <h2 id="map-h">What lands in your calendar</h2>
+    <p class="sub">Roster codes turn into plain, readable events with the right times, including night shifts that finish the next morning.</p>
+    <ul class="map">
+      <li><code>D 08:30 - 17:00 @ Biochem</code><svg class="ico arrow" aria-hidden="true"><use href="#i-arrow"/></svg><span class="sr">becomes</span><span class="ev teal"><b>Day shift · Biochem</b>8:30 am – 5:00 pm</span></li>
+      <li><code>A 06:30 - 15:00</code><svg class="ico arrow" aria-hidden="true"><use href="#i-arrow"/></svg><span class="sr">becomes</span><span class="ev yellow"><b>Early shift</b>6:30 am – 3:00 pm</span></li>
+      <li><code>P 15:00 - 23:30</code><svg class="ico arrow" aria-hidden="true"><use href="#i-arrow"/></svg><span class="sr">becomes</span><span class="ev peach"><b>Late shift</b>3:00 pm – 11:30 pm</span></li>
+      <li><code>N 23:00 - 07:00</code><svg class="ico arrow" aria-hidden="true"><use href="#i-arrow"/></svg><span class="sr">becomes</span><span class="ev navy"><b>Night shift</b>11:00 pm – 7:00 am<small>ends next morning</small></span></li>
+      <li><code>OC 17:00 - 06:30</code><svg class="ico arrow" aria-hidden="true"><use href="#i-arrow"/></svg><span class="sr">becomes</span><span class="ev lilac"><b>On call</b>5:00 pm – 6:30 am<small>ends next morning</small></span></li>
+      <li><code>ADO 8hr</code><svg class="ico arrow" aria-hidden="true"><use href="#i-arrow"/></svg><span class="sr">becomes</span><span class="ev sand"><b>ADO</b>All day</span></li>
+      <li><code>DO</code><svg class="ico arrow" aria-hidden="true"><use href="#i-arrow"/></svg><span class="sr">is</span><span class="ev dayoff"><b>Skipped</b>Days off stay out of your calendar</span></li>
+    </ul>
+    <p class="map-note">Department names after the @, like Biochem, go into the event title, so you can see where you're working at a glance.</p>
+  </div>
+</section>
+
+<section id="privacy" class="sec band" aria-labelledby="priv-h">
+  <div class="wrap band-grid">
+    <div>
+      <h2 id="priv-h">Privacy, in plain words</h2>
+      <p>Your roster is your business. Roster Sync is built to see as little as it can.</p>
+      <a class="out" href="/privacy.html">Read the privacy policy</a>
+    </div>
+    <ul class="checks">
+      <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>No password is ever asked for or stored.</li>
+      <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>It only reads the roster page you have open.</li>
+      <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>It can only see and change the calendar it created, never your other calendars.</li>
+      <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Your shifts go straight from your browser to your Google Calendar. There is no Roster Sync server in between.</li>
+      <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>No ads, no tracking, no analytics.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="faq" class="sec" aria-labelledby="faq-h">
+  <div class="wrap">
+    <h2 id="faq-h">Common questions</h2>
+    <div class="faq">
+      <details><summary>Is this an official NSW Health app?</summary><p>No. Roster Sync is an independent project made by a coworker. It is not affiliated with or endorsed by NSW Health, NSW Health Pathology, Allocate or RLDatix.</p></details>
+      <details><summary>Does it work on my phone?</summary><p>Install it on a computer with Chrome, Edge or Firefox. Your phone and watch then get your shifts through their calendar app, with nothing extra to install on them.</p></details>
+      <details><summary>Do I need a Google account?</summary><p>Yes. Roster Sync keeps your shifts in Google Calendar, and Apple Calendar and Outlook pick them up from there. A free Google account is fine, and it can be one you only use for this.</p></details>
+      <details><summary>Google warns that the app isn't verified. Is that OK?</summary><p>Until Google finishes reviewing Roster Sync, it may show "Google hasn't verified this app". Click <b>Advanced</b>, then <b>Go to Roster Sync</b>. Roster Sync can only see and change the Work roster calendar it creates, never your other calendars, email or files.</p></details>
+      <details><summary>Which browsers does it work in?</summary><p>Chrome, Edge and Firefox on a computer. Safari isn't supported. In Firefox, Google sometimes asks you to click <b>Connect</b> on the panel again; one click reconnects.</p></details>
+      <details><summary>How do I stop it or remove it?</summary><p>Click the Roster Sync button in your browser's toolbar and choose <b>Disconnect</b>, then remove the extension the way you'd remove any other. If you like, you can also delete the Work roster calendar. Your other calendars are never touched.</p></details>
+      <details><summary>Does it cost anything?</summary><p>No. Roster Sync is free.</p></details>
+      <details><summary>Something not working?</summary><p>Email <a href="mailto:hello@ducktake.com">hello@ducktake.com</a> with what happened and which browser and calendar you use. Please leave out anything private, like other people's names from the roster.</p></details>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-row">
+      <p class="foot-brand"><span class="mark sm"><svg aria-hidden="true"><use href="#duck"/></svg></span>Roster Sync <span>© ducktake.com</span></p>
+      <nav aria-label="Footer"><a href="/privacy.html">Privacy policy</a><a href="mailto:hello@ducktake.com">Contact</a></nav>
+    </div>
+    <p>Roster Sync is an independent project made by a coworker. It is not affiliated with or endorsed by NSW Health, NSW Health Pathology, Allocate or RLDatix. Product names are used only to say what it works with.</p>
+  </div>
+</footer>
+
+<script>
+const STORES = { chrome: '#chrome-store-link', edge: '#edge-store-link', firefox: '#firefox-store-link' };
+// Put your store links above. Edge installs from the Chrome Web Store too, so edge can be the chrome link.
+// The same placeholders are also in the install links in the page (used when JavaScript is off),
+// so a find-and-replace updates both.
+
+const ua = navigator.userAgent;
+const mobile = /Android|iPhone|iPad|iPod|Mobi/.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1);
+const browser = mobile ? ''
+  : ua.includes('Edg/') ? 'edge'
+  : ua.includes('Firefox/') ? 'firefox'
+  : window.chrome ? 'chrome'
+  : '';
+const install = document.getElementById('install');
+const label = document.getElementById('stores-label');
+
+install.querySelectorAll('[data-store]').forEach(a => { a.href = STORES[a.dataset.store]; });
+
+if (browser) {
+  const btn = document.getElementById('main-btn');
+  const name = { chrome: 'Chrome', edge: 'Edge', firefox: 'Firefox' }[browser];
+  btn.href = STORES[browser];
+  btn.querySelector('span').textContent = `Add to ${name} — it's free`;
+  btn.hidden = false;
+  install.querySelector(`[data-store="${browser}"]`).remove();
+  label.textContent = 'Also on';
+} else {
+  document.getElementById('note').hidden = false;
+  label.textContent = 'Store pages:';
+}
+install.classList.add('picked');
+</script>
+</body>
+</html>
