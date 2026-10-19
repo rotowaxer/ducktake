@@ -1,1 +1,17 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" rx="9" fill="#1f6f5c"/><path fill="#f2c14e" d="M6 18H26A10 7.5 0 0 1 6 18ZM6 18 4.5 12.5 11 18Z"/><circle fill="#f2c14e" cx="21" cy="13" r="5"/><path fill="#e8833a" d="M25.5 12 29.5 13.5 25.5 15Z"/><circle fill="#1d2b26" cx="22.2" cy="11.8" r="1.1"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- The Ducktake duck (facing right, with a tick for a wing) peeking over a calendar page. -->
+  <symbol id="duck" viewBox="28 60 462 382">
+    <g transform="matrix(-1 0 0 1 520 0)" stroke="#1d2b26" stroke-width="24" stroke-linejoin="round" stroke-linecap="round">
+      <path fill="#f0c419" d="M138.67 249.69c-15.36-17.88-24.63-41.13-24.63-66.57 0-1.52.03-3.05.11-4.57 2.38-54.37 47.22-97.73 102.2-97.73 56.5 0 102.3 45.8 102.3 102.3 0 27.06-10.52 51.65-27.68 69.94 67.2 6.84 116.18-3.96 148.24-24.31 14.13-8.98 32.61 1.29 32.61 18.04v16.48c0 87.25-37.53 157.98-124.78 157.98H209.62c-50.05 0-90.58-40.77-90.21-90.9.21-27.31 12.75-51.6 32.24-67.98-4.7-3.83-9.03-8.08-12.97-12.67z"/>
+      <path fill="#f78a68" d="M138.67 249.69C74.68 254.6 41.51 218.61 41.51 218.61c36.38-4.34 63.96-30.76 72.63-40.05-.08 1.52-.11 3.04-.11 4.57 0 25.43 9.27 48.68 24.64 66.56z"/>
+      <path fill="none" stroke-width="26" d="M188.7 146v31"/>
+      <path fill="none" stroke="#1f6f5c" stroke-width="28" d="M398 326l-46 44-86-80"/>
+    </g>
+  </symbol>
+  <rect x="3" y="7" width="58" height="54" rx="12" fill="#fffdf9"/>
+  <path d="M3 19A12 12 0 0 1 15 7H49A12 12 0 0 1 61 19V23H3Z" fill="#1f6f5c"/>
+  <rect x="3" y="7" width="58" height="54" rx="12" fill="none" stroke="#1d2b26" stroke-width="2.6"/>
+  <rect x="16.5" y="2.5" width="6" height="10" rx="3" fill="#fffdf9" stroke="#1d2b26" stroke-width="2.2"/>
+  <rect x="41.5" y="2.5" width="6" height="10" rx="3" fill="#fffdf9" stroke="#1d2b26" stroke-width="2.2"/>
+  <use href="#duck" x="7" y="15.5" width="49" height="40.5"/>
+</svg>
