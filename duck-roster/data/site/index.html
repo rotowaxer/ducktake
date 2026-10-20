@@ -419,7 +419,7 @@ a:hover{text-decoration-thickness:.14em}
   </div>
 </footer>
 
-<script>
+<script data-cfasync="false">
 const STORES = { chrome: '#chrome-store-link', edge: '#edge-store-link', firefox: '#firefox-store-link' };
 // Put your store links above. Edge installs from the Chrome Web Store too, so edge can be the chrome link.
 // The same placeholders are also in the install links in the page (used when JavaScript is off),
@@ -451,6 +451,6 @@ if (browser) {
 }
 install.classList.add('picked');
 </script>
-<script src="eol-sample.js"></script>
+<script data-cfasync="false" src="eol-sample.js"></script>
 </body>
 </html>
