@@ -46,7 +46,7 @@ footer{padding-block:40px 48px;font-size:.92rem;color:var(--muted)}
 <ul>
   <li>It runs only on the Employee Online roster site (patheol.ros.health.nsw.gov.au).</li>
   <li>On that site it reads the month shown in the date box and the text of the shifts in your roster grid, for example "D 08:30 - 17:00 @ Biochem".</li>
-  <li>It never reads or stores your Employee Online username or password, and it reads no other website.</li>
+  <li>It never stores or sends your Employee Online username or password, and it reads no other website.</li>
 </ul>
 
 <h2>Where your shifts go</h2>
@@ -61,11 +61,12 @@ footer{padding-block:40px 48px;font-size:.92rem;color:var(--muted)}
   <li>When you click Connect, Google asks you to allow one permission: <i>"Make secondary Google calendars, and see, create, change, and delete events on them"</i> (the <code>calendar.app.created</code> scope). It covers only calendars that Roster Sync itself creates. Roster Sync cannot see your other calendars, email, contacts or files.</li>
   <li>Google gives the extension an access token that lasts about an hour. It is kept in your browser's memory, is used only to call Google Calendar, and is never sent anywhere else.</li>
   <li>Roster Sync's use and transfer to any other app of information received from Google APIs will adhere to the <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>, including the Limited Use requirements.</li>
+  <li>The use of information received from Google APIs will adhere to the <a href="https://developer.chrome.com/docs/webstore/program-policies/limited-use">Chrome Web Store User Data Policy</a>, including the Limited Use requirements.</li>
   <li>We do not sell this information, use it for advertising, or let any person read it.</li>
 </ul>
 
 <h2>What is stored on your computer</h2>
-<p>In the browser's extension storage: the ID of your Work roster calendar, the time and size of the last sync, whether automatic sync is on, and whether you disconnected. Removing the extension deletes all of it.</p>
+<p>In the browser's extension storage: the ID of your Work roster calendar, the time and size of the last sync, and whether you disconnected. Whether automatic sync is on is kept in your browser's synced settings, so it follows you to your other computers. No shift details are stored. Removing the extension deletes all of it.</p>
 
 <h2>This website</h2>
 <p>roster.ducktake.com is a plain information page. It sets no cookies and runs no analytics. It is served through Cloudflare, which processes standard connection data such as IP addresses to deliver the page and protect it from abuse.</p>
