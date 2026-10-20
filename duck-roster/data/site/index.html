@@ -63,7 +63,7 @@ a:hover{text-decoration-thickness:.14em}
 .navy{--cb:var(--n-bg);--cf:var(--n-fg)}
 .lilac{--cb:var(--l-bg);--cf:var(--l-fg)}
 .sand{--cb:var(--s-bg);--cf:var(--s-fg)}
-.grid i,.ev,.tag,.cal-ico,.eyebrow{background:var(--cb);color:var(--cf)}
+.ev,.tag,.cal-ico,.eyebrow{background:var(--cb);color:var(--cf)}
 
 /* header */
 .head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:14px}
@@ -79,7 +79,7 @@ a:hover{text-decoration-thickness:.14em}
 
 /* hero */
 .hero{position:relative;overflow:hidden;padding:clamp(16px,4vw,48px) 0 104px;background:radial-gradient(640px 420px at 82% 28%,var(--glow),transparent 70%)}
-.hero-grid{display:grid;gap:56px;align-items:center}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:56px;align-items:center}
 @media (min-width:1080px){.hero-grid{grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:48px}}
 .eyebrow{display:inline-block;margin-bottom:18px;padding:6px 14px;border-radius:999px;font-weight:650;font-size:.88rem}
 .hl{background:linear-gradient(transparent 60%,var(--hl) 60% 90%,transparent 90%);-webkit-box-decoration-break:clone;box-decoration-break:clone;padding-inline:.06em}
@@ -103,18 +103,14 @@ a:hover{text-decoration-thickness:.14em}
 
 /* hero picture: roster + toast + phone */
 .shot{display:grid;grid-template-columns:minmax(0,1fr) 20px 180px;grid-template-rows:32px auto auto;width:100%;max-width:580px;margin-inline:auto}
-.roster{grid-area:1/1/3/3;align-self:start;position:relative;padding-bottom:44px;background:var(--surface);border:1px solid var(--border);border-radius:20px;box-shadow:var(--shadow)}
-.bar{display:flex;align-items:center;gap:6px;padding:12px 16px;border-bottom:1px solid var(--border);font-size:.8rem;font-weight:650;color:var(--muted)}
-.bar i{width:10px;height:10px;border-radius:50%;background:var(--border)}
+.roster{grid-area:1/1/3/3;align-self:start;position:relative;padding-bottom:40px;background:#fff;border:1px solid var(--border);border-radius:16px;box-shadow:var(--shadow);overflow:visible}
+.bar{display:flex;align-items:center;gap:6px;padding:10px 14px;border-bottom:1px solid #ddd;font:600 .8rem Inter,"Segoe UI",Arial,sans-serif;color:#333}
+.bar i{width:10px;height:10px;border-radius:50%;background:#ddd}
 .bar span{margin-left:8px}
-.grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px;padding:12px}
-.grid b{padding-bottom:2px;text-align:center;font-size:.64rem;font-weight:650;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
-.grid span{display:flex;flex-direction:column;justify-content:space-between;gap:4px;min-height:48px;padding:4px;border-radius:8px;background:var(--bg);font-size:.68rem;line-height:1;color:var(--muted)}
-.grid i{padding:4px 0;border-radius:5px;text-align:center;font:normal 700 .66rem/1 var(--sans)}
-.grid .off{background:none;border:1px dashed var(--border);color:var(--muted);font-weight:500}
-.pill{position:absolute;left:-14px;bottom:-22px;z-index:2;white-space:nowrap;display:flex;align-items:center;gap:10px;padding:10px 16px 10px 12px;border-radius:20px;background:var(--pill);color:var(--on-pill);border:1px solid rgb(255 255 255/.08);font-size:.82rem;font-weight:600;line-height:1.35;box-shadow:0 14px 30px -12px rgb(0 0 0/.5)}
-.pill .ico{color:var(--accent);stroke-width:3}
-.again{margin-left:8px;padding:4px 10px;border-radius:999px;background:var(--accent);color:#2a2620;font-weight:700;white-space:nowrap}
+.eolbox{padding:8px;border-radius:0 0 16px 16px;overflow:hidden}
+.pill{position:absolute;left:-14px;bottom:-22px;z-index:2;display:flex;align-items:center;white-space:nowrap;background:#1d2420;color:#e8ece9;border-radius:999px;padding:8px 10px 8px 18px;box-shadow:0 6px 24px rgba(0,0,0,.35);font:14px/1.3 system-ui,"Segoe UI",sans-serif}
+.pill span{font-size:13px;color:#cfd8d3;margin-right:12px}
+.pill b{font-weight:600;color:#0f1a15;background:#6fc3a8;border-radius:999px;padding:8px 14px}
 .phone{grid-area:2/2/4/4;z-index:1;align-self:start;position:relative;aspect-ratio:1/1.8;padding:24px 10px 12px;background:var(--surface);border:7px solid var(--frame);border-radius:32px;box-shadow:var(--shadow);font-size:.68rem;line-height:1.3}
 .phone::before{content:"";position:absolute;top:7px;left:50%;width:44px;height:5px;margin-left:-22px;border-radius:9px;background:var(--frame)}
 .ph-head{display:flex;justify-content:space-between;align-items:center;margin:0 2px 10px;font-size:.8rem}
@@ -159,7 +155,7 @@ a:hover{text-decoration-thickness:.14em}
 /* roster -> calendar */
 .map{display:grid;gap:12px;max-width:860px;margin-top:32px}
 .map li{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1.1fr);align-items:center;gap:16px;padding:14px;background:var(--surface);border:1px solid var(--border);border-radius:18px}
-.map code{justify-self:start;padding:8px 12px;border-radius:10px;background:var(--bg);border:1px solid var(--border);font:600 .95rem/1.4 var(--mono);overflow-wrap:anywhere}
+.map [data-eol],.map .eol-ev{justify-self:start;min-width:150px}
 .arrow{width:24px;height:24px;color:var(--primary)}
 .ev{display:flex;flex-direction:column;align-items:flex-start;gap:2px;padding:10px 14px;border-left:5px solid currentColor;border-radius:8px;line-height:1.3}
 .ev small{margin-top:4px;padding:2px 9px;border-radius:999px;background:var(--accent);color:#2a2620;font-size:.78rem;font-weight:650}
@@ -263,27 +259,21 @@ a:hover{text-decoration-thickness:.14em}
       <p class="made">Made by a coworker, for coworkers. No ads, no catch.</p>
     </div>
 
-    <div class="shot" role="img" aria-label="Example: a four-week roster from 2 to 29 November with 21 shifts and 7 days off. A panel on the roster reads: 21 shifts synced, 9:41 am, Sync again. Beside it, a phone calendar shows the same shifts, starting with a day shift in Biochem on Monday 2 November.">
+    <div class="shot" role="img" aria-label="Example with made-up shifts: an Employee Online roster from 19 October to 15 November with 21 shifts. The Sync panel on the roster reads: 21 shifts synced, 9:41 am, Sync again. Beside it, a phone calendar shows the same shifts, starting with a day shift in Biochem on Tuesday 20 October.">
       <div class="roster">
-        <div class="bar"><i></i><i></i><i></i><span>My roster · 2–29 Nov</span></div>
-        <div class="grid">
-          <b>Mon</b><b>Tue</b><b>Wed</b><b>Thu</b><b>Fri</b><b>Sat</b><b>Sun</b>
-          <span>2<i class="teal">D</i></span><span>3<i class="yellow">A</i></span><span>4<i class="peach">P</i></span><span>5<i class="off">DO</i></span><span>6<i class="navy">N</i></span><span>7<i class="navy">N</i></span><span>8<i class="off">DO</i></span>
-          <span>9<i class="off">DO</i></span><span>10<i class="teal">D</i></span><span>11<i class="teal">D</i></span><span>12<i class="lilac">OC</i></span><span>13<i class="teal">D</i></span><span>14<i class="off">DO</i></span><span>15<i class="off">DO</i></span>
-          <span>16<i class="sand">ADO</i></span><span>17<i class="yellow">A</i></span><span>18<i class="yellow">A</i></span><span>19<i class="peach">P</i></span><span>20<i class="peach">P</i></span><span>21<i class="off">DO</i></span><span>22<i class="lilac">OC</i></span>
-          <span>23<i class="teal">D</i></span><span>24<i class="teal">D</i></span><span>25<i class="yellow">A</i></span><span>26<i class="navy">N</i></span><span>27<i class="navy">N</i></span><span>28<i class="navy">N</i></span><span>29<i class="off">DO</i></span>
-        </div>
-        <div class="pill"><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span>21 shifts synced · 9:41 am <span class="again">Sync again</span></span></div>
+        <div class="bar"><i></i><i></i><i></i><span>View Roster · 19 Oct – 15 Nov</span></div>
+        <div class="eolbox"><div data-eol-grid></div></div>
+        <div class="pill"><span>21 shifts synced · 9:41 am</span><b>Sync again</b></div>
       </div>
       <div class="phone">
-        <p class="ph-head"><b>November</b><span><i></i>Work roster</span></p>
+        <p class="ph-head"><b>October</b><span><i></i>Work roster</span></p>
         <ul>
-          <li><span>Mon<b>2</b></span><span class="ev teal"><b>Day shift · Biochem</b>8:30 am – 5:00 pm</span></li>
-          <li><span>Tue<b>3</b></span><span class="ev yellow"><b>Early shift</b>6:30 am – 3:00 pm</span></li>
-          <li><span>Wed<b>4</b></span><span class="ev peach"><b>Late shift</b>3:00 pm – 11:30 pm</span></li>
-          <li><span>Fri<b>6</b></span><span class="ev navy"><b>Night shift</b>11:00 pm – 7:00 am</span></li>
-          <li><span>Sat<b>7</b></span><span class="ev navy"><b>Night shift</b>11:00 pm – 7:00 am</span></li>
-          <li><span>Tue<b>10</b></span><span class="ev teal"><b>Day shift</b>8:30 am – 5:00 pm</span></li>
+          <li><span>Tue<b>20</b></span><span class="ev teal"><b>Day shift · Biochem</b>8:30 am – 5:00 pm</span></li>
+          <li><span>Wed<b>21</b></span><span class="ev yellow"><b>Early shift</b>6:30 am – 3:00 pm</span></li>
+          <li><span>Thu<b>22</b></span><span class="ev peach"><b>Late shift</b>3:00 pm – 11:30 pm</span></li>
+          <li><span>Fri<b>23</b></span><span class="ev peach"><b>Late shift</b>3:00 pm – 11:30 pm</span></li>
+          <li><span>Mon<b>26</b></span><span class="ev navy"><b>Night shift</b>11:00 pm – 7:00 am</span></li>
+          <li><span>Tue<b>27</b></span><span class="ev navy"><b>Night shift</b>11:00 pm – 7:00 am</span></li>
         </ul>
       </div>
     </div>
@@ -373,13 +363,13 @@ a:hover{text-decoration-thickness:.14em}
     <h2 id="map-h">What lands in your calendar</h2>
     <p class="sub">Roster codes turn into plain, readable events with the right times, including night shifts that finish the next morning.</p>
     <ul class="map">
-      <li><code>D 08:30 - 17:00 @ Biochem</code><svg class="ico arrow" aria-hidden="true"><use href="#i-arrow"/></svg><span class="sr">becomes</span><span class="ev teal"><b>Day shift · Biochem</b>8:30 am – 5:00 pm</span></li>
-      <li><code>A 06:30 - 15:00</code><svg class="ico arrow" aria-hidden="true"><use href="#i-arrow"/></svg><span class="sr">becomes</span><span class="ev yellow"><b>Early shift</b>6:30 am – 3:00 pm</span></li>
-      <li><code>P 15:00 - 23:30</code><svg class="ico arrow" aria-hidden="true"><use href="#i-arrow"/></svg><span class="sr">becomes</span><span class="ev peach"><b>Late shift</b>3:00 pm – 11:30 pm</span></li>
-      <li><code>N 23:00 - 07:00</code><svg class="ico arrow" aria-hidden="true"><use href="#i-arrow"/></svg><span class="sr">becomes</span><span class="ev navy"><b>Night shift</b>11:00 pm – 7:00 am<small>ends next morning</small></span></li>
-      <li><code>OC 17:00 - 06:30</code><svg class="ico arrow" aria-hidden="true"><use href="#i-arrow"/></svg><span class="sr">becomes</span><span class="ev lilac"><b>On call</b>5:00 pm – 6:30 am<small>ends next morning</small></span></li>
-      <li><code>ADO 8hr</code><svg class="ico arrow" aria-hidden="true"><use href="#i-arrow"/></svg><span class="sr">becomes</span><span class="ev sand"><b>ADO</b>All day</span></li>
-      <li><code>DO</code><svg class="ico arrow" aria-hidden="true"><use href="#i-arrow"/></svg><span class="sr">is</span><span class="ev dayoff"><b>Skipped</b>Days off stay out of your calendar</span></li>
+      <li><span data-eol="D 08:30 - 17:00 @ Biochem">D 08:30 - 17:00 @ Biochem</span><svg class="ico arrow" aria-hidden="true"><use href="#i-arrow"/></svg><span class="sr">becomes</span><span class="ev teal"><b>Day shift · Biochem</b>8:30 am – 5:00 pm</span></li>
+      <li><span data-eol="A 06:30 - 15:00">A 06:30 - 15:00</span><svg class="ico arrow" aria-hidden="true"><use href="#i-arrow"/></svg><span class="sr">becomes</span><span class="ev yellow"><b>Early shift</b>6:30 am – 3:00 pm</span></li>
+      <li><span data-eol="P 15:00 - 23:30">P 15:00 - 23:30</span><svg class="ico arrow" aria-hidden="true"><use href="#i-arrow"/></svg><span class="sr">becomes</span><span class="ev peach"><b>Late shift</b>3:00 pm – 11:30 pm</span></li>
+      <li><span data-eol="N 23:00 - 07:00">N 23:00 - 07:00</span><svg class="ico arrow" aria-hidden="true"><use href="#i-arrow"/></svg><span class="sr">becomes</span><span class="ev navy"><b>Night shift</b>11:00 pm – 7:00 am<small>ends next morning</small></span></li>
+      <li><span data-eol="OC 17:00 - 06:30">OC 17:00 - 06:30</span><svg class="ico arrow" aria-hidden="true"><use href="#i-arrow"/></svg><span class="sr">becomes</span><span class="ev lilac"><b>On call</b>5:00 pm – 6:30 am<small>ends next morning</small></span></li>
+      <li><span data-eol="ADO 8hr">ADO 8hr</span><svg class="ico arrow" aria-hidden="true"><use href="#i-arrow"/></svg><span class="sr">becomes</span><span class="ev sand"><b>ADO</b>All day</span></li>
+      <li><span data-eol="DO">DO</span><svg class="ico arrow" aria-hidden="true"><use href="#i-arrow"/></svg><span class="sr">is</span><span class="ev dayoff"><b>Skipped</b>Days off stay out of your calendar</span></li>
     </ul>
     <p class="map-note">Department names after the @, like Biochem, go into the event title, so you can see where you're working at a glance.</p>
   </div>
@@ -461,5 +451,6 @@ if (browser) {
 }
 install.classList.add('picked');
 </script>
+<script src="eol-sample.js"></script>
 </body>
 </html>
