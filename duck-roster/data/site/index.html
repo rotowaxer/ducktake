@@ -146,6 +146,7 @@ a:hover{text-decoration-thickness:.14em}
 .cal-ico{display:grid;place-items:center;width:48px;height:48px;margin-bottom:16px;border-radius:14px}
 .cal-ico .ico{width:24px;height:24px}
 .card .tag{display:inline-block;margin:0 0 12px;padding:4px 10px;border-radius:10px;font-size:.82rem;font-weight:700;color:var(--cf)}
+.how-to code{padding:1px 6px;border-radius:6px;background:var(--bg-alt);font:600 .9em/1.4 var(--mono);color:var(--text)}
 .how-to ol{display:grid;gap:10px;padding-left:1.3em;list-style:decimal;color:var(--muted)}
 .how-to li::marker{color:var(--primary);font-weight:700}
 .honest{display:flex;gap:14px;align-items:flex-start;max-width:860px;margin:24px 0 0;padding:18px 20px;border:2px dashed var(--border);border-radius:18px;color:var(--muted)}
@@ -248,12 +249,12 @@ a:hover{text-decoration-thickness:.14em}
       <h1 id="hero-h">Your roster, in your calendar. <span class="hl">Automatically.</span></h1>
       <p class="lede">Roster Sync puts your shifts into the calendar you already use, so they're on your phone and watch too. Connect it once, and every time you open your roster it brings your calendar up to date by itself.</p>
       <div class="install" id="install">
-        <a class="btn-big" id="main-btn" href="#chrome-store-link" hidden><svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg><span>Add to Chrome — it's free</span></a>
+        <a class="btn-big" id="main-btn" href="#manual" hidden><svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg><span>Add to Chrome — it's free</span></a>
         <p class="note" id="note" hidden><svg class="ico" aria-hidden="true"><use href="#i-info"/></svg><span>Open this page on a computer in Chrome, Edge or Firefox to install. Your phone will get the shifts through its calendar.</span></p>
         <p class="stores"><span id="stores-label">Add it to your browser — it's free:</span>
-          <a href="#chrome-store-link" data-store="chrome">Chrome</a>
-          <a href="#edge-store-link" data-store="edge">Edge</a>
-          <a href="#firefox-store-link" data-store="firefox">Firefox</a>
+          <a href="#manual" data-store="chrome">Chrome</a>
+          <a href="#manual" data-store="edge">Edge</a>
+          <a href="#manual" data-store="firefox">Firefox</a>
         </p>
       </div>
       <p class="made">Made by a coworker, for coworkers. No ads, no catch.</p>
@@ -280,6 +281,33 @@ a:hover{text-decoration-thickness:.14em}
   </div>
   <svg class="swim" aria-hidden="true"><use href="#duck"/></svg>
   <svg class="wave" viewBox="0 0 1440 48" preserveAspectRatio="none" aria-hidden="true"><path d="M0 24C120 8 240 8 360 24S600 40 720 24 960 8 1080 24 1320 40 1440 24V48H0Z"/></svg>
+</section>
+
+<section id="manual" class="sec" aria-labelledby="manual-h">
+  <div class="wrap">
+    <h2 id="manual-h">Install it now</h2>
+    <p class="sub">Roster Sync is waiting for its Chrome Web Store listing to be approved. Until then you can add it by hand in Chrome or Edge on a computer. It takes about two minutes, and it's the same extension the store will have.</p>
+    <div class="steps how-to">
+      <div class="card">
+        <h3>Chrome or Edge</h3>
+        <ol>
+          <li><a href="roster-sync.zip" download>Download roster-sync.zip</a>, then right-click it and choose <b>Extract All</b>. Keep the folder somewhere permanent, such as Documents: the browser keeps using it.</li>
+          <li>Type <code>chrome://extensions</code> into the address bar (Edge: <code>edge://extensions</code>) and switch on <b>Developer mode</b>.</li>
+          <li>Click <b>Load unpacked</b> and choose the extracted folder, the one that contains <code>manifest.json</code>.</li>
+          <li>Open your roster in Employee Online and click <b>Connect Google Calendar</b> on the panel at the bottom right.</li>
+        </ol>
+      </div>
+      <div class="card">
+        <h3>Good to know</h3>
+        <ol>
+          <li>Chrome may remind you that developer-mode extensions are on. That's expected for a hand-installed extension; leave it running.</li>
+          <li>Hand-installed copies don't update themselves. Once the store version is out, remove this one and add the store version; your Work roster calendar stays as it is.</li>
+          <li>Work computers often block Developer mode. If yours does, use your own computer: your shifts still reach your phone through the calendar.</li>
+          <li>Firefox will get its own version from Firefox Add-ons.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
 </section>
 
 <section id="how" class="sec alt" aria-labelledby="how-h">
@@ -420,8 +448,9 @@ a:hover{text-decoration-thickness:.14em}
 </footer>
 
 <script data-cfasync="false">
-const STORES = { chrome: '#chrome-store-link', edge: '#edge-store-link', firefox: '#firefox-store-link' };
-// Put your store links above. Edge installs from the Chrome Web Store too, so edge can be the chrome link.
+const STORES = { chrome: '#manual', edge: '#manual', firefox: '#manual' };
+// Until the store listings are approved every button opens the manual install below. Then put the store links
+// here (Edge installs from the Chrome Web Store too, so edge can be the chrome link).
 // The same placeholders are also in the install links in the page (used when JavaScript is off),
 // so a find-and-replace updates both.
 
