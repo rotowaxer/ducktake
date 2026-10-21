@@ -126,8 +126,11 @@ a:hover{text-decoration-thickness:.14em}
   .phone{display:none}
   .pill{left:12px;right:12px;white-space:normal}
 }
-.swim{position:absolute;left:7%;bottom:15px;width:46px;height:46px}
-.wave{position:absolute;left:0;bottom:-1px;z-index:1;display:block;width:100%;height:40px;fill:var(--bg-alt)}
+/* The duck rides the front wave: the wave is twice the page wide with a crest every half page width, and the duck
+   sits a quarter of a crest in (12.5%), so its bob and tilt below stay in step with the water at any screen width. */
+.swim{position:absolute;left:calc(12.5% - 23px);bottom:10px;width:46px;height:46px;transform-origin:50% 75%}
+.wave{position:absolute;left:0;bottom:-1px;z-index:1;display:block;width:200%;height:40px;fill:var(--bg-alt)}
+.wave.back{z-index:auto;height:52px;opacity:.5}
 
 /* sections */
 .sec{padding-block:clamp(56px,8vw,96px)}
@@ -195,12 +198,17 @@ a:hover{text-decoration-thickness:.14em}
 @media (prefers-reduced-motion:no-preference){
   html{scroll-behavior:smooth}
   .pill{animation:pop .6s cubic-bezier(.2,.9,.3,1.25) .5s both}
-  .swim{animation:bob 5s ease-in-out infinite}
+  /* One crest passes the duck every 6s (12s per page width): up and down over 3s each, tilting a quarter beat ahead. */
+  .wave{animation:surf 12s linear infinite}
+  .wave.back{animation-duration:20s;animation-direction:reverse}
+  .swim{animation:ride 3s ease-in-out infinite alternate,tilt 3s ease-in-out -1.5s infinite alternate}
   .btn-big,.stores a{transition:background-color .15s,transform .15s}
   .btn-big:hover{transform:translateY(-1px)}
 }
 @keyframes pop{from{opacity:0;transform:translateY(10px) scale(.96)}}
-@keyframes bob{50%{transform:translateY(2px) rotate(-3deg)}}
+@keyframes surf{to{transform:translateX(-50%)}}
+@keyframes ride{from{translate:0 -10px}to{translate:0 10px}}
+@keyframes tilt{from{rotate:-8deg}to{rotate:8deg}}
 </style>
 </head>
 <body>
@@ -279,8 +287,9 @@ a:hover{text-decoration-thickness:.14em}
       </div>
     </div>
   </div>
+  <svg class="wave back" viewBox="0 0 2880 48" preserveAspectRatio="none" aria-hidden="true"><path d="M0 24C120 8 240 8 360 24S600 40 720 24 960 8 1080 24 1320 40 1440 24 1680 8 1800 24 2040 40 2160 24 2400 8 2520 24 2760 40 2880 24V48H0Z"/></svg>
   <svg class="swim" aria-hidden="true"><use href="#duck"/></svg>
-  <svg class="wave" viewBox="0 0 1440 48" preserveAspectRatio="none" aria-hidden="true"><path d="M0 24C120 8 240 8 360 24S600 40 720 24 960 8 1080 24 1320 40 1440 24V48H0Z"/></svg>
+  <svg class="wave" viewBox="0 0 2880 48" preserveAspectRatio="none" aria-hidden="true"><path d="M0 24C120 8 240 8 360 24S600 40 720 24 960 8 1080 24 1320 40 1440 24 1680 8 1800 24 2040 40 2160 24 2400 8 2520 24 2760 40 2880 24V48H0Z"/></svg>
 </section>
 
 <section id="manual" class="sec" aria-labelledby="manual-h">
