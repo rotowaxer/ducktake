@@ -4,7 +4,7 @@ icon: https://raw.githubusercontent.com/rotowaxer/ducktake/main/duck-labtake/ico
 name: LabTake Demo
 tagline: Try a lab stock and expiry tracker with sample data
 category: developer
-version: "6"
+version: "7"
 port: 18096
 description: >-
   A demonstration copy of a laboratory inventory app:
@@ -25,5 +25,5 @@ dependencies: []
 defaultUsername: "admin@labtake.demo"
 defaultPassword: "labtake-demo"
 releaseNotes: >-
-  Copies of the demo now start only when someone is using them, so the demo
-  uses almost no memory when idle.
+  Updates PocketBase to 0.39.11, which fixes a security issue (CVE-2026-82410)
+  that could let anyone crash the server.

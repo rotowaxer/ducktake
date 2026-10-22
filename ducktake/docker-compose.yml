@@ -7,7 +7,7 @@ services:
       PROXY_AUTH_ADD: "false"
 
   app:
-    image: ghcr.io/muchobien/pocketbase:0.39.6
+    image: ghcr.io/muchobien/pocketbase:0.39.11
     restart: unless-stopped
     stop_grace_period: 1m
 

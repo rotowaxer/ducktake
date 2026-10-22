@@ -54,7 +54,7 @@ services:
   # v178: PocketBase for the gate's copies, and nothing else. It keeps
   # running so Umbrel sees the app as up.
   pocketbase:
-    image: ghcr.io/muchobien/pocketbase:0.39.6
+    image: ghcr.io/muchobien/pocketbase:0.39.11
     restart: unless-stopped
     entrypoint: ["/bin/sh", "-c", "cp /usr/local/bin/pocketbase /pb/pocketbase.new && mv -f /pb/pocketbase.new /pb/pocketbase || exit 1; trap 'exit 0' TERM; sleep 2147483647 & wait"]
     volumes:

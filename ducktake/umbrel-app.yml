@@ -4,7 +4,7 @@ icon: https://raw.githubusercontent.com/rotowaxer/ducktake/main/ducktake/icon.sv
 name: Ducktake
 tagline: Lab reagent inventory
 category: developer
-version: "2"
+version: "3"
 port: 18095
 description: >-
   Ducktake reagent and consumable inventory for a pathology lab, running on PocketBase.
@@ -19,4 +19,6 @@ path: /
 dependencies: []
 defaultUsername: ""
 defaultPassword: ""
-releaseNotes: ""
+releaseNotes: >-
+  Updates PocketBase to 0.39.11, which fixes a security issue (CVE-2026-82410)
+  that could let anyone crash the server.
