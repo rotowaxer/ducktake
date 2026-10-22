@@ -398,7 +398,7 @@ a:hover{text-decoration-thickness:.14em}
 <section id="mapping" class="sec alt" aria-labelledby="map-h">
   <div class="wrap">
     <h2 id="map-h">What lands in your calendar</h2>
-    <p class="sub">Roster codes turn into plain, readable events with the right times, including night shifts that finish the next morning. In Google Calendar each kind of shift gets its own colour, as below, and a shift that changes turns red.</p>
+    <p class="sub">Roster codes turn into plain, readable events with the right times, including night shifts that finish the next morning. In Google Calendar each kind of shift gets its own colour, as below, and a shift that changes turns red. You can pick your own colours in the toolbar popup.</p>
     <ul class="map">
       <li><span data-eol="D 08:30 - 17:00 @ Biochem">D 08:30 - 17:00 @ Biochem</span><svg class="ico arrow" aria-hidden="true"><use href="#i-arrow"/></svg><span class="sr">becomes</span><span class="ev teal"><b>Day shift · Biochem</b>8:30 am – 5:00 pm</span></li>
       <li><span data-eol="A 06:30 - 15:00">A 06:30 - 15:00</span><svg class="ico arrow" aria-hidden="true"><use href="#i-arrow"/></svg><span class="sr">becomes</span><span class="ev yellow"><b>Early shift</b>6:30 am – 3:00 pm</span></li>
@@ -422,7 +422,7 @@ a:hover{text-decoration-thickness:.14em}
     <ul class="checks">
       <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>No password is ever asked for or stored.</li>
       <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>It only reads the roster page you have open.</li>
-      <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>It can only see and change the calendar it created, never your other calendars.</li>
+      <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>It only changes the calendar it created. It can see the names of your other calendars, to find its own, but never what's in them.</li>
       <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Your shifts go straight from your browser to your Google Calendar. There is no Roster Sync server in between.</li>
       <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>No ads, no tracking, no analytics.</li>
     </ul>
@@ -436,10 +436,12 @@ a:hover{text-decoration-thickness:.14em}
       <details><summary>Is this an official NSW Health app?</summary><p>No. Roster Sync is an independent project made by a coworker. It is not affiliated with or endorsed by NSW Health, NSW Health Pathology, Allocate or RLDatix.</p></details>
       <details><summary>Does it work on my phone?</summary><p>Install it on a computer with Chrome, Edge or Firefox. Your phone and watch then get your shifts through their calendar app, with nothing extra to install on them.</p></details>
       <details><summary>Do I need a Google account?</summary><p>Yes. Roster Sync keeps your shifts in Google Calendar, and Apple Calendar and Outlook pick them up from there. A free Google account is fine, and it can be one you only use for this.</p></details>
-      <details><summary>Google warns that the app isn't verified. Is that OK?</summary><p>Until Google finishes reviewing Roster Sync, it may show "Google hasn't verified this app". Click <b>Advanced</b>, then <b>Go to Roster Sync</b>. Roster Sync can only see and change the Work roster calendar it creates, never your other calendars, email or files.</p></details>
+      <details><summary>Google warns that the app isn't verified. Is that OK?</summary><p>Until Google finishes reviewing Roster Sync, it may show "Google hasn't verified this app". Click <b>Advanced</b>, then <b>Go to Roster Sync</b>. Roster Sync can only change the Work roster calendar it creates. It can see your calendars' names, to find that one, but never their events, your email or your files.</p></details>
       <details><summary>Does it work for my health district?</summary><p>Yes, if your roster is on NSW Health's Employee Online. It works on every Employee Online address ending in <code>.ros.health.nsw.gov.au</code>, for example <code>patheol</code>, <code>nnsweol</code>, <code>awheol</code> and <code>wnsweol</code>. Work in two districts? Open each roster and both sets of shifts go into the same Work roster calendar without replacing each other.</p></details>
       <details><summary>Which browsers does it work in?</summary><p>Chrome, Edge and Firefox on a computer. Safari isn't supported. In Firefox, Google sometimes asks you to click <b>Connect</b> on the panel again; one click reconnects.</p></details>
+      <details><summary>I see my shifts twice, or I deleted the Work roster calendar</summary><p>Every browser and computer you use Roster Sync on shares one Work roster calendar. If you still see every shift twice, the extra calendar is left over from an older version: delete it in Google Calendar (Settings, pick the calendar, <b>Remove calendar → Delete</b>). If you delete the one it uses, just open your roster again: it makes a new Work roster calendar and fills in the weeks you look at.</p></details>
       <details><summary>How do I stop it or remove it?</summary><p>Click the Roster Sync button in your browser's toolbar and choose <b>Disconnect</b>, then remove the extension the way you'd remove any other. If you like, you can also delete the Work roster calendar. Your other calendars are never touched.</p></details>
+      <details><summary>Can I change the colours?</summary><p>Yes. Click the Roster Sync button in your browser's toolbar, open <b>Shift colours in Google Calendar</b> and pick a colour for each kind of shift, including changed shifts. Google Calendar offers 11 colours. Your roster page recolours the shifts on screen straight away, and other weeks as you view them. Apple Calendar and Outlook show the Work roster calendar in one colour.</p></details>
       <details><summary>Does it cost anything?</summary><p>No. Roster Sync is free.</p></details>
       <details><summary>Something not working?</summary><p>Email <a href="mailto:hello@ducktake.com">hello@ducktake.com</a> with what happened and which browser and calendar you use. Please leave out anything private, like other people's names from the roster.</p></details>
     </div>
