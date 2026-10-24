@@ -63,7 +63,7 @@ a:hover{text-decoration-thickness:.14em}
 .navy{--cb:var(--n-bg);--cf:var(--n-fg)}
 .lilac{--cb:var(--l-bg);--cf:var(--l-fg)}
 .sand{--cb:var(--s-bg);--cf:var(--s-fg)}
-.ev,.tag,.cal-ico,.eyebrow{background:var(--cb);color:var(--cf)}
+.ev,.eyebrow{background:var(--cb);color:var(--cf)}
 
 /* header */
 .head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:14px}
@@ -138,23 +138,11 @@ a:hover{text-decoration-thickness:.14em}
 .sub{max-width:38em;margin:0;font-size:1.1rem;color:var(--muted)}
 .card{padding:26px 24px;background:var(--surface);border:1px solid var(--border);border-radius:22px}
 .card p{margin:0;color:var(--muted)}
-.steps,.cals{display:grid;gap:20px;margin-top:36px;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr))}
-.num{display:grid;place-items:center;width:44px;height:44px;margin-bottom:16px;border-radius:50%;background:var(--accent);color:#2a2620;font:800 1.2rem/1 var(--round)}
-.keeps{display:grid;gap:20px;margin-top:20px;padding:clamp(22px,4vw,36px);border-radius:22px;background:var(--t-bg)}
-.keeps p{margin:0;color:var(--muted)}
-.keeps ul{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(min(100%,170px),1fr))}
-.keeps li{display:flex;align-items:center;gap:10px;padding:12px 14px;border-radius:14px;background:var(--surface);font-weight:600}
-.keeps li .ico{color:var(--primary)}
-@media (min-width:860px){.keeps{grid-template-columns:1fr 1.4fr;align-items:center}}
-.cal-ico{display:grid;place-items:center;width:48px;height:48px;margin-bottom:16px;border-radius:14px}
-.cal-ico .ico{width:24px;height:24px}
-.card .tag{display:inline-block;margin:0 0 12px;padding:4px 10px;border-radius:10px;font-size:.82rem;font-weight:700;color:var(--cf)}
+.steps{display:grid;gap:20px;margin-top:36px;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr))}
 .how-to code{padding:1px 6px;border-radius:6px;background:var(--bg-alt);font:600 .9em/1.4 var(--mono);color:var(--text)}
-.how-to ol{display:grid;gap:10px;padding-left:1.3em;list-style:decimal;color:var(--muted)}
+.how-to ol,.how-to ul{display:grid;gap:10px;padding-left:1.3em;list-style:decimal;color:var(--muted)}
+.how-to ul{list-style:disc}
 .how-to li::marker{color:var(--primary);font-weight:700}
-.honest{display:flex;gap:14px;align-items:flex-start;max-width:860px;margin:24px 0 0;padding:18px 20px;border:2px dashed var(--border);border-radius:18px;color:var(--muted)}
-.honest .ico{margin-top:3px;color:var(--primary)}
-.honest b{color:var(--text)}
 
 /* roster -> calendar */
 .map{display:grid;gap:12px;max-width:860px;margin-top:32px}
@@ -245,7 +233,7 @@ a:hover{text-decoration-thickness:.14em}
 <header class="wrap head">
   <a class="brand" href="/"><span class="mark"><svg aria-hidden="true"><use href="#logo"/></svg></span><span>Roster Sync<small>by ducktake</small></span></a>
   <nav class="nav" aria-label="Main">
-    <a href="#how">How it works</a><a href="#calendars">Calendars</a><a href="#privacy">Privacy</a><a href="#faq">FAQ</a>
+    <a href="#manual">Install</a><a href="#calendars">Calendars</a><a href="#privacy">Privacy</a><a href="#faq">Help</a>
   </nav>
 </header>
 
@@ -253,19 +241,19 @@ a:hover{text-decoration-thickness:.14em}
 <section class="hero" aria-labelledby="hero-h">
   <div class="wrap hero-grid">
     <div>
-      <p class="eyebrow">Free add-on for your Employee Online roster</p>
+      <p class="eyebrow">Free add-on for NSW Health Employee Online</p>
       <h1 id="hero-h">Your roster, in your calendar. <span class="hl">Automatically.</span></h1>
-      <p class="lede">Roster Sync puts your shifts into the calendar you already use, so they're on your phone and watch too. Connect it once, and every time you open your roster it brings your calendar up to date by itself.</p>
+      <p class="lede">Open your roster. Your shifts appear in Google Calendar, on your phone and watch.</p>
       <div class="install" id="install">
         <a class="btn-big" id="main-btn" href="#manual" hidden><svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg><span>Add to Chrome — it's free</span></a>
-        <p class="note" id="note" hidden><svg class="ico" aria-hidden="true"><use href="#i-info"/></svg><span>Open this page on a computer in Chrome, Edge or Firefox to install. Your phone will get the shifts through its calendar.</span></p>
-        <p class="stores"><span id="stores-label">Add it to your browser — it's free:</span>
+        <p class="note" id="note" hidden><svg class="ico" aria-hidden="true"><use href="#i-info"/></svg><span>Install on a computer in Chrome, Edge or Firefox. Your phone gets the shifts through its calendar.</span></p>
+        <p class="stores"><span id="stores-label">Add it to your browser for free:</span>
           <a href="#manual" data-store="chrome">Chrome</a>
           <a href="#manual" data-store="edge">Edge</a>
           <a href="#manual" data-store="firefox">Firefox</a>
         </p>
       </div>
-      <p class="made">Made by a coworker, for coworkers. No ads, no catch.</p>
+      <p class="made">No ads. Made by a coworker, not by NSW Health.</p>
     </div>
 
     <div class="shot" role="img" aria-label="Example with made-up shifts: an Employee Online roster from 19 October to 15 November with 21 shifts. The Sync panel on the roster reads: 21 shifts synced, 9:41 am, Sync again. Beside it, a phone calendar shows the same shifts, starting with a day shift in Biochem on Tuesday 20 October.">
@@ -292,158 +280,82 @@ a:hover{text-decoration-thickness:.14em}
   <svg class="wave" viewBox="0 0 2880 48" preserveAspectRatio="none" aria-hidden="true"><path d="M0 24C120 8 240 8 360 24S600 40 720 24 960 8 1080 24 1320 40 1440 24 1680 8 1800 24 2040 40 2160 24 2400 8 2520 24 2760 40 2880 24V48H0Z"/></svg>
 </section>
 
-<section id="manual" class="sec" aria-labelledby="manual-h">
+<section id="manual" class="sec alt" aria-labelledby="manual-h">
   <div class="wrap">
     <h2 id="manual-h">Install it now</h2>
-    <p class="sub">Roster Sync is waiting for its Chrome Web Store listing to be approved. Until then you can add it by hand in Chrome or Edge on a computer. It takes about two minutes, and it's the same extension the store will have.</p>
+    <p class="sub">Not in the Chrome store yet, so add it by hand in Chrome or Edge. About two minutes.</p>
     <div class="steps how-to">
       <div class="card">
         <h3>Chrome or Edge</h3>
         <ol>
-          <li><a href="roster-sync.zip" download>Download roster-sync.zip</a>, then right-click it and choose <b>Extract All</b>. Keep the folder somewhere permanent, such as Documents: the browser keeps using it.</li>
-          <li>Type <code>chrome://extensions</code> into the address bar (Edge: <code>edge://extensions</code>) and switch on <b>Developer mode</b>.</li>
-          <li>Click <b>Load unpacked</b> and choose the extracted folder, the one that contains <code>manifest.json</code>.</li>
-          <li>Open your roster in Employee Online and click <b>Connect Google Calendar</b> on the panel at the bottom right.</li>
+          <li><a href="roster-sync.zip" download>Download roster-sync.zip</a> and extract it into Documents. Keep the folder: the browser runs it from there.</li>
+          <li>Go to <code>chrome://extensions</code> (Edge: <code>edge://extensions</code>) and turn on <b>Developer mode</b>.</li>
+          <li>Click <b>Load unpacked</b> and pick the extracted folder.</li>
+          <li>Open your roster and click <b>Connect Google Calendar</b> (bottom right). Any Google account works.</li>
+          <li>Google says it hasn't verified the app? That's expected for now: click <b>Advanced</b>, then <b>Go to Roster Sync</b>.</li>
         </ol>
       </div>
       <div class="card">
         <h3>Good to know</h3>
-        <ol>
-          <li>Chrome may remind you that developer-mode extensions are on. That's expected for a hand-installed extension; leave it running.</li>
-          <li>Hand-installed copies don't update themselves. Once the store version is out, remove this one and add the store version; your Work roster calendar stays as it is.</li>
-          <li>Work computers often block Developer mode. If yours does, use your own computer: your shifts still reach your phone through the calendar.</li>
-          <li>Firefox will get its own version from Firefox Add-ons.</li>
-        </ol>
+        <ul>
+          <li><b>Update:</b> extract the new zip over the old folder, then click the reload arrow on Roster Sync in the extensions page.</li>
+          <li>Work computer blocks Developer mode? Use your own computer.</li>
+          <li>Nothing to install on your phone. It gets the shifts through its calendar.</li>
+          <li>Firefox version coming soon.</li>
+        </ul>
       </div>
     </div>
   </div>
 </section>
 
-<section id="how" class="sec alt" aria-labelledby="how-h">
+<section id="how" class="sec" aria-labelledby="how-h">
   <div class="wrap">
-    <h2 id="how-h">How it works</h2>
-    <p class="sub">Three steps, and you only do them once.</p>
-    <ol class="steps">
-      <li class="card"><span class="num" aria-hidden="true">1</span><h3>Add to your browser</h3><p>Install Roster Sync from the Chrome, Edge or Firefox add-on store in one click. It's free.</p></li>
-      <li class="card"><span class="num" aria-hidden="true">2</span><h3>Open your roster in Employee Online</h3><p>Sign in the way you always do and open the month view. A small Sync panel appears at the bottom right.</p></li>
-      <li class="card"><span class="num" aria-hidden="true">3</span><h3>Connect your calendar once</h3><p>Click <b>Connect Google Calendar</b> on the Sync panel and approve. That's all the setup there is.</p></li>
-    </ol>
-    <div class="keeps">
-      <div>
-        <h3>Then it just keeps up</h3>
-        <p>Every time you open your roster, Roster Sync checks it against your calendar by itself. It only ever touches its own <b>Work roster</b> calendar, and days off are skipped.</p>
-      </div>
-      <ul>
-        <li><svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg>New shifts are added</li>
-        <li><svg class="ico" aria-hidden="true"><use href="#i-sync"/></svg>Changed shifts are updated and flagged “Changed:”, with the original time in the notes</li>
-        <li><svg class="ico" aria-hidden="true"><use href="#i-minus"/></svg>Removed shifts are deleted</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<section id="calendars" class="sec" aria-labelledby="cal-h">
-  <div class="wrap">
-    <h2 id="cal-h">Works with the calendar you already use</h2>
-    <p class="sub">Roster Sync keeps a <b>Work roster</b> calendar in your Google account. Your phone, watch, Apple Calendar or Outlook then show it like any other calendar.</p>
-    <ul class="cals">
-      <li class="card">
-        <span class="cal-ico teal"><svg class="ico" aria-hidden="true"><use href="#i-sync"/></svg></span>
-        <h3>Google Calendar</h3>
-        <p class="tag teal">Updates within seconds</p>
-        <p>The direct sync. Connect once from the Sync panel. A free Google account is all you need, even one you only use for this.</p>
-      </li>
-      <li class="card">
-        <span class="cal-ico yellow"><svg class="ico" aria-hidden="true"><use href="#i-link"/></svg></span>
-        <h3>Apple Calendar</h3>
-        <p class="tag yellow">Updates by itself</p>
-        <p>iPhone, iPad and Mac. Add your Google account to Apple Calendar once and Work roster appears next to your other calendars.</p>
-      </li>
-      <li class="card">
-        <span class="cal-ico yellow"><svg class="ico" aria-hidden="true"><use href="#i-link"/></svg></span>
-        <h3>Outlook</h3>
-        <p class="tag yellow">Updates by itself</p>
-        <p>Outlook on the web and Outlook.com can show your Google calendar too, at work or at home. Steps below.</p>
-      </li>
-      <li class="card">
-        <span class="cal-ico sand"><svg class="ico" aria-hidden="true"><use href="#i-dl"/></svg></span>
-        <h3>Anything else</h3>
-        <p class="tag sand">One-off file</p>
-        <p>Click the Roster Sync toolbar button and download the month as an .ics file. It's a snapshot, so it won't update by itself.</p>
-      </li>
-    </ul>
-    <div class="steps how-to">
-      <div class="card" id="apple">
-        <h3>Set up iPhone, iPad or Mac</h3>
-        <ol>
-          <li>iPhone or iPad: open <b>Settings → Apps → Calendar → Calendar Accounts → Add Account → Google</b> (older iOS: Settings → Calendar → Accounts).</li>
-          <li>Mac: open <b>Calendar → Settings → Accounts</b>, click <b>+</b> and choose <b>Google</b>.</li>
-          <li>Sign in with the Google account you connected, and leave <b>Calendars</b> switched on.</li>
-          <li>No Work roster? Tick it at <a href="https://www.google.com/calendar/syncselect" rel="noopener">google.com/calendar/syncselect</a>.</li>
-        </ol>
-      </div>
-      <div class="card" id="outlook">
-        <h3>Set up Outlook</h3>
-        <ol>
-          <li>Outlook on the web or Outlook.com: open the calendar and choose <b>Add calendar → Add personal calendars → Google</b>. This updates by itself.</li>
-          <li>If that option is missing: in Google Calendar open <b>Settings → Work roster → Integrate calendar</b> and copy the <b>Secret address in iCal format</b>.</li>
-          <li>In Outlook choose <b>Add calendar → Subscribe from web</b> and paste it. Outlook checks it every few hours.</li>
-        </ol>
-      </div>
-    </div>
-    <p class="honest"><svg class="ico" aria-hidden="true"><use href="#i-info"/></svg><span><b>Keep the secret address to yourself.</b> Anyone who has it can see your shifts. If it ever gets out, click <b>Reset</b> next to it in Google Calendar. Roster Sync never sees your Apple or Microsoft account.</span></p>
-  </div>
-</section>
-
-<section id="mapping" class="sec alt" aria-labelledby="map-h">
-  <div class="wrap">
-    <h2 id="map-h">What lands in your calendar</h2>
-    <p class="sub">Roster codes turn into plain, readable events with the right times, including night shifts that finish the next morning. In Google Calendar each kind of shift gets its own colour, as below, and a shift that changes turns red. You can pick your own colours in the toolbar popup.</p>
+    <h2 id="how-h">What you get</h2>
     <ul class="map">
       <li><span data-eol="D 08:30 - 17:00 @ Biochem">D 08:30 - 17:00 @ Biochem</span><svg class="ico arrow" aria-hidden="true"><use href="#i-arrow"/></svg><span class="sr">becomes</span><span class="ev teal"><b>Day shift · Biochem</b>8:30 am – 5:00 pm</span></li>
-      <li><span data-eol="A 06:30 - 15:00">A 06:30 - 15:00</span><svg class="ico arrow" aria-hidden="true"><use href="#i-arrow"/></svg><span class="sr">becomes</span><span class="ev yellow"><b>Early shift</b>6:30 am – 3:00 pm</span></li>
       <li><span data-eol="P 15:00 - 23:30">P 15:00 - 23:30</span><svg class="ico arrow" aria-hidden="true"><use href="#i-arrow"/></svg><span class="sr">becomes</span><span class="ev peach"><b>Late shift</b>3:00 pm – 11:30 pm</span></li>
       <li><span data-eol="N 23:00 - 07:00">N 23:00 - 07:00</span><svg class="ico arrow" aria-hidden="true"><use href="#i-arrow"/></svg><span class="sr">becomes</span><span class="ev navy"><b>Night shift</b>11:00 pm – 7:00 am<small>ends next morning</small></span></li>
-      <li><span data-eol="OC 17:00 - 06:30">OC 17:00 - 06:30</span><svg class="ico arrow" aria-hidden="true"><use href="#i-arrow"/></svg><span class="sr">becomes</span><span class="ev lilac"><b>On call</b>5:00 pm – 6:30 am<small>ends next morning</small></span></li>
-      <li><span data-eol="ADO 8hr">ADO 8hr</span><svg class="ico arrow" aria-hidden="true"><use href="#i-arrow"/></svg><span class="sr">becomes</span><span class="ev sand"><b>ADO</b>All day</span></li>
-      <li><span data-eol="DO">DO</span><svg class="ico arrow" aria-hidden="true"><use href="#i-arrow"/></svg><span class="sr">is</span><span class="ev dayoff"><b>Skipped</b>Days off stay out of your calendar</span></li>
+      <li><span data-eol="DO">DO</span><svg class="ico arrow" aria-hidden="true"><use href="#i-arrow"/></svg><span class="sr">is</span><span class="ev dayoff"><b>Skipped</b>Days off stay out</span></li>
     </ul>
-    <p class="map-note">Department names after the @, like Biochem, go into the event title, so you can see where you're working at a glance.</p>
+    <p class="map-note">It updates whenever you open your roster on that computer. Changed shifts are marked; cancelled ones are removed.</p>
+  </div>
+</section>
+
+<section id="calendars" class="sec alt" aria-labelledby="cal-h">
+  <div class="wrap">
+    <h2 id="cal-h">Using iPhone, Mac or Outlook?</h2>
+    <p class="sub">Shifts go into a <b>Work roster</b> calendar in your Google account (a free one is fine). To see it in another app, add that Google account.</p>
+    <div class="steps">
+      <div class="card"><h3>iPhone or iPad</h3><p><b>Settings → Apps → Calendar → Calendar Accounts → Add Account → Google</b></p></div>
+      <div class="card"><h3>Mac</h3><p><b>Calendar → Settings → Accounts → + → Google</b></p></div>
+      <div class="card"><h3>Outlook</h3><p>On the web: <b>Add calendar → Add personal calendars → Google</b></p></div>
+    </div>
+    <p class="map-note">No Work roster on your iPhone or Mac? Tick it at <a href="https://www.google.com/calendar/syncselect" rel="noopener">google.com/calendar/syncselect</a>.</p>
   </div>
 </section>
 
 <section id="privacy" class="sec band" aria-labelledby="priv-h">
   <div class="wrap band-grid">
     <div>
-      <h2 id="priv-h">Privacy, in plain words</h2>
-      <p>Your roster is your business. Roster Sync is built to see as little as it can.</p>
-      <a class="out" href="/privacy.html">Read the privacy policy</a>
+      <h2 id="priv-h">Privacy</h2>
+      <a class="out" href="/privacy.html">Privacy policy</a>
     </div>
     <ul class="checks">
-      <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>No password is ever asked for or stored.</li>
-      <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>It only reads the roster page you have open.</li>
-      <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>It only changes the calendar it created. It can see the names of your other calendars, to find its own, but never what's in them.</li>
-      <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Your shifts go straight from your browser to your Google Calendar. There is no Roster Sync server in between.</li>
-      <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>No ads, no tracking, no analytics.</li>
+      <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>No password asked for or stored.</li>
+      <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Only reads the roster page you have open.</li>
+      <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Only changes its own Work roster calendar.</li>
+      <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Straight from your browser to Google. No server, no tracking.</li>
     </ul>
   </div>
 </section>
 
 <section id="faq" class="sec" aria-labelledby="faq-h">
   <div class="wrap">
-    <h2 id="faq-h">Common questions</h2>
+    <h2 id="faq-h">Help</h2>
+    <p class="sub">Something not working? Email <a href="mailto:hello@ducktake.com">hello@ducktake.com</a> with your browser and what happened. Leave out anything private.</p>
     <div class="faq">
-      <details><summary>Is this an official NSW Health app?</summary><p>No. Roster Sync is an independent project made by a coworker. It is not affiliated with or endorsed by NSW Health, NSW Health Pathology, Allocate or RLDatix.</p></details>
-      <details><summary>Does it work on my phone?</summary><p>Install it on a computer with Chrome, Edge or Firefox. Your phone and watch then get your shifts through their calendar app, with nothing extra to install on them.</p></details>
-      <details><summary>Do I need a Google account?</summary><p>Yes. Roster Sync keeps your shifts in Google Calendar, and Apple Calendar and Outlook pick them up from there. A free Google account is fine, and it can be one you only use for this.</p></details>
-      <details><summary>Google warns that the app isn't verified. Is that OK?</summary><p>Until Google finishes reviewing Roster Sync, it may show "Google hasn't verified this app". Click <b>Advanced</b>, then <b>Go to Roster Sync</b>. Roster Sync can only change the Work roster calendar it creates. It can see your calendars' names, to find that one, but never their events, your email or your files.</p></details>
-      <details><summary>Does it work for my health district?</summary><p>Yes, if your roster is on NSW Health's Employee Online. It works on every Employee Online address ending in <code>.ros.health.nsw.gov.au</code>, for example <code>patheol</code>, <code>nnsweol</code>, <code>awheol</code> and <code>wnsweol</code>. Work in two districts? Open each roster and both sets of shifts go into the same Work roster calendar without replacing each other.</p></details>
-      <details><summary>Which browsers does it work in?</summary><p>Chrome, Edge and Firefox on a computer. Safari isn't supported. In Firefox, Google sometimes asks you to click <b>Connect</b> on the panel again; one click reconnects.</p></details>
-      <details><summary>I see my shifts twice, or I deleted the Work roster calendar</summary><p>Every browser and computer you use Roster Sync on shares one Work roster calendar. If you still see every shift twice, the extra calendar is left over from an older version: delete it in Google Calendar (Settings, pick the calendar, <b>Remove calendar → Delete</b>). If you delete the one it uses, just open your roster again: it makes a new Work roster calendar and fills in the weeks you look at.</p></details>
-      <details><summary>How do I stop it or remove it?</summary><p>Click the Roster Sync button in your browser's toolbar and choose <b>Disconnect</b>, then remove the extension the way you'd remove any other. If you like, you can also delete the Work roster calendar. Your other calendars are never touched.</p></details>
-      <details><summary>Can I change the colours?</summary><p>Yes. Click the Roster Sync button in your browser's toolbar, open <b>Shift colours in Google Calendar</b> and pick a colour for each kind of shift, including changed shifts. Google Calendar offers 11 colours. Your roster page recolours the shifts on screen straight away, and other weeks as you view them. Apple Calendar and Outlook show the Work roster calendar in one colour.</p></details>
-      <details><summary>Does it cost anything?</summary><p>No. Roster Sync is free.</p></details>
-      <details><summary>Something not working?</summary><p>Email <a href="mailto:hello@ducktake.com">hello@ducktake.com</a> with what happened and which browser and calendar you use. Please leave out anything private, like other people's names from the roster.</p></details>
+      <details><summary>How do I change the colours?</summary><p>Click the puzzle-piece icon in your browser toolbar, then <b>Roster Sync</b>, then <b>Change shift colours</b>. Not there? Your copy is out of date: <a href="#manual">update it</a>.</p></details>
+      <details><summary>How do I stop it?</summary><p>Click the Roster Sync toolbar button and choose <b>Disconnect</b>, then remove the extension.</p></details>
     </div>
   </div>
 </section>

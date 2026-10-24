@@ -46,8 +46,11 @@
       }).join('') + '</tr>';
     });
     el.innerHTML = html + '</table>';
-    // Scale the 770px grid to whatever box it sits in.
-    const fit = () => { el.style.zoom = Math.min(1, el.parentElement.clientWidth / 770); };
+    // Scale the 770px grid to the space inside whatever box it sits in (clientWidth includes the box's padding).
+    const fit = () => {
+      const box = el.parentElement, cs = getComputedStyle(box);
+      el.style.zoom = Math.min(1, (box.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight)) / 770);
+    };
     if (!el.hasAttribute('data-eol-full')) { fit(); addEventListener('resize', fit); }
   }
 })();
