@@ -34,20 +34,45 @@ footer{padding-block:40px 48px;font-size:.92rem;color:var(--muted)}
 <header><a class="brand" href="/"><img class="mark" src="icon.svg" alt="">Roster Sync</a></header>
 <main>
 <h1>Privacy policy</h1>
-<p class="muted">Effective 24 October 2026. Roster Sync is a free browser extension by an individual developer at ducktake.com. Questions: <a href="mailto:hello@ducktake.com">hello@ducktake.com</a></p>
+<p class="muted">Effective 24 October 2026</p>
+<p>Roster Sync is a free browser extension, made by an individual developer at ducktake.com, that copies your shifts from NSW Health's Employee Online roster into a calendar in your own Google account. This policy explains what it accesses, how it uses it, and how to remove it.</p>
 
+<h2>What it accesses</h2>
 <ul>
-  <li><b>What it reads:</b> the shifts on your Employee Online roster page (sites ending in .ros.health.nsw.gov.au). Nothing else, and never your password.</li>
-  <li><b>Where they go:</b> straight from your browser to a <b>Work roster</b> calendar it creates in your Google account. Not to us or anyone else.</li>
-  <li><b>Google access:</b> it can only manage calendars it created, and reads the names in your calendar list to find its own. It never sees the events in your other calendars, your email or your files. Its sign-in token lasts about an hour and stays in your browser.</li>
-  <li><b>Stored on your computer:</b> its calendar's ID, when it last synced, and your settings (automatic sync, colours, light or dark). No shift details.</li>
-  <li><b>Never:</b> sold, shared, used for ads or tracked. No analytics.</li>
-  <li><b>Stop and delete:</b> click Disconnect in the toolbar popup (or remove access at <a href="https://myaccount.google.com/permissions">myaccount.google.com/permissions</a>), delete the Work roster calendar, and remove the extension.</li>
-  <li><b>This website:</b> no cookies or analytics. Cloudflare handles connection data such as IP addresses to deliver it.</li>
+  <li><b>Your roster page:</b> on Employee Online sites (addresses ending in .ros.health.nsw.gov.au) it reads the dates and shifts shown, such as "D 08:30 - 17:00 @ Biochem". It never reads your Employee Online password or any other website.</li>
+  <li><b>Google Calendar</b> (<code>calendar.app.created</code>): lets it create one calendar named Work roster and add, change and delete events in calendars it created. It cannot see or change events in any other calendar.</li>
+  <li><b>Your Google calendar list</b> (<code>calendar.calendarlist.readonly</code>): lets it read the names of your calendars, so it can find the Work roster calendar it made when you use it in another browser or on another computer.</li>
+  <li><b>A Google sign-in token</b> that lasts about an hour. It never sees your Google password, email address or profile.</li>
 </ul>
 
+<h2>How it uses that data</h2>
+<p>Only to keep the Work roster calendar matching your roster: adding new shifts, updating changed ones and removing cancelled ones. Calendar names are compared inside your browser to find that calendar and are not kept.</p>
+
+<h2>Where it is stored</h2>
+<ul>
+  <li>Your shifts are stored only in the Work roster calendar in your own Google account.</li>
+  <li>On your computer, in the browser's extension storage: the Work roster calendar's ID, the time and size of the last sync, whether you disconnected, and your settings (automatic sync, shift colours, light or dark). No shift details. The sign-in token is kept in memory only.</li>
+  <li>Roster Sync has no server. Nothing is sent to ducktake.com or to anyone except Google.</li>
+</ul>
+
+<h2>Sharing</h2>
+<p>Your data is never sold, shared or transferred to anyone, used for advertising, read by any person, or used to train AI or machine learning models.</p>
+
+<h2>Keeping and deleting your data</h2>
+<ul>
+  <li>Click <b>Disconnect</b> in the Roster Sync toolbar popup to revoke its access, or remove it at <a href="https://myaccount.google.com/permissions">myaccount.google.com/permissions</a>.</li>
+  <li>Delete the Work roster calendar in Google Calendar settings to delete your synced shifts.</li>
+  <li>Remove the extension to delete everything it stored on your computer.</li>
+</ul>
+
+<h2>Google API Services</h2>
 <p>Roster Sync's use and transfer to any other app of information received from Google APIs will adhere to the <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>, including the Limited Use requirements. The use of information received from Google APIs will adhere to the <a href="https://developer.chrome.com/docs/webstore/program-policies/limited-use">Chrome Web Store User Data Policy</a>, including the Limited Use requirements.</p>
-<p class="muted">Changes will be posted here with a new date.</p>
+
+<h2>This website</h2>
+<p>roster.ducktake.com sets no cookies and runs no analytics. Cloudflare processes connection data such as IP addresses to deliver the page.</p>
+
+<h2>Changes and contact</h2>
+<p>Changes to this policy will be posted here with a new date. Questions: <a href="mailto:hello@ducktake.com">hello@ducktake.com</a>.</p>
 </main>
 <footer><a href="/">Back to Roster Sync</a> · Not affiliated with or endorsed by NSW Health, NSW Health Pathology, Allocate or RLDatix.</footer>
 </body>
