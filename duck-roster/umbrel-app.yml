@@ -7,11 +7,11 @@ category: developer
 version: "1"
 port: 18097
 description: >-
-  The public roster.ducktake.com page for the Roster Sync browser extension: install links,
+  The public pondertime.party page for the Roster Sync browser extension: install links,
   calendar set-up help and the privacy policy. Plain static files served by nginx.
 
 developer: Rotowaxer
-website: https://roster.ducktake.com/
+website: https://pondertime.party/
 submitter: Rotowaxer
 support: mailto:hello@ducktake.com
 repo: ""
