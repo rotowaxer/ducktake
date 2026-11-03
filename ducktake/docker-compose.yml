@@ -10,6 +10,7 @@ services:
     image: ghcr.io/muchobien/pocketbase:0.39.11
     restart: unless-stopped
     stop_grace_period: 1m
+    mem_limit: 2g
 
     
     volumes:
