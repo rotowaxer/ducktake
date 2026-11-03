@@ -65,7 +65,7 @@ services:
   app:
     image: node:22-alpine
     restart: unless-stopped
-    mem_limit: 6g
+    mem_limit: 8g
     cpu_shares: 1287
     pids_limit: 4096
     oom_score_adj: 500
