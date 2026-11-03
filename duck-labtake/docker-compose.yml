@@ -17,7 +17,7 @@
 #
 # The limits are on the app service, so the demo cannot starve the other
 # apps on the Umbrel (Plex, Jellyfin, Home Assistant):
-#   mem_limit 6g        50 copies in use and the gate: a copy in use was about
+#   mem_limit 8g        50 copies in use and the gate: a copy in use was about
 #                       100 MB, and 80 MB after ten days (v176). Past it, the
 #                       kernel stops a copy, which the gate starts again at
 #                       its visitor's next request.
