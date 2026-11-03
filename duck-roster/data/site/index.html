@@ -245,12 +245,11 @@ a:hover{text-decoration-thickness:.14em}
       <h1 id="hero-h">Roster Sync: your roster, in your calendar. <span class="hl">Automatically.</span></h1>
       <p class="lede">Roster Sync is a free browser extension that copies your shifts from Employee Online into your Google Calendar, so they're on your phone and watch.</p>
       <div class="install" id="install">
-        <a class="btn-big" id="main-btn" href="#manual" hidden><svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg><span>Add to Chrome — it's free</span></a>
-        <p class="note" id="note" hidden><svg class="ico" aria-hidden="true"><use href="#i-info"/></svg><span>Install on a computer in Chrome, Edge or Firefox. Your phone gets the shifts through its calendar.</span></p>
+        <a class="btn-big" id="main-btn" href="https://chromewebstore.google.com/detail/roster-sync/jlgiimpnkngngdhcegpleidolfnclfdh" hidden><svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg><span>Add to Chrome — it's free</span></a>
+        <p class="note" id="note" hidden><svg class="ico" aria-hidden="true"><use href="#i-info"/></svg><span>Install on a computer in Chrome or Edge (Firefox version coming soon). Your phone gets the shifts through its calendar.</span></p>
         <p class="stores"><span id="stores-label">Add it to your browser for free:</span>
-          <a href="#manual" data-store="chrome">Chrome</a>
-          <a href="#manual" data-store="edge">Edge</a>
-          <a href="#manual" data-store="firefox">Firefox</a>
+          <a href="https://chromewebstore.google.com/detail/roster-sync/jlgiimpnkngngdhcegpleidolfnclfdh" data-store="chrome">Chrome</a>
+          <a href="https://chromewebstore.google.com/detail/roster-sync/jlgiimpnkngngdhcegpleidolfnclfdh" data-store="edge">Edge</a>
         </p>
       </div>
       <p class="made">Roster Sync uses your Google account only to keep your shifts in one calendar, Work roster. It doesn't use AI or handle images. <a href="https://pondertime.party/privacy.html">Privacy policy</a>. No ads. Made by a coworker, not by NSW Health.</p>
@@ -282,15 +281,12 @@ a:hover{text-decoration-thickness:.14em}
 
 <section id="manual" class="sec alt" aria-labelledby="manual-h">
   <div class="wrap">
-    <h2 id="manual-h">Install it now</h2>
-    <p class="sub">Not in the Chrome store yet, so add it by hand in Chrome or Edge. About two minutes.</p>
+    <h2 id="manual-h">Install it</h2>
     <div class="steps how-to">
       <div class="card">
         <h3>Chrome or Edge</h3>
         <ol>
-          <li><a href="roster-sync.zip" download>Download roster-sync.zip</a> and extract it into Documents. Keep the folder: the browser runs it from there.</li>
-          <li>Go to <code>chrome://extensions</code> (Edge: <code>edge://extensions</code>) and turn on <b>Developer mode</b>.</li>
-          <li>Click <b>Load unpacked</b> and pick the extracted folder.</li>
+          <li><a href="https://chromewebstore.google.com/detail/roster-sync/jlgiimpnkngngdhcegpleidolfnclfdh">Add Roster Sync from the Chrome Web Store</a>. In Edge, click <b>Allow extensions from other stores</b> if it asks.</li>
           <li>Open your roster and click <b>Connect Google Calendar</b> (bottom right). Any Google account works.</li>
           <li>Google says it hasn't verified the app? That's expected for now: click <b>Advanced</b>, then <b>Go to Roster Sync</b>.</li>
         </ol>
@@ -298,8 +294,7 @@ a:hover{text-decoration-thickness:.14em}
       <div class="card">
         <h3>Good to know</h3>
         <ul>
-          <li><b>Update:</b> extract the new zip over the old folder, then click the reload arrow on Roster Sync in the extensions page.</li>
-          <li>Work computer blocks Developer mode? Use your own computer.</li>
+          <li>Added it by hand before? Remove that copy on the extensions page, then add the store version. Your Work roster calendar stays.</li>
           <li>Nothing to install on your phone. It gets the shifts through its calendar.</li>
           <li>Firefox version coming soon.</li>
         </ul>
@@ -355,7 +350,7 @@ a:hover{text-decoration-thickness:.14em}
     <h2 id="faq-h">Help</h2>
     <p class="sub">Something not working? Email <!--email_off--><a href="mailto:hello@ducktake.com">hello@ducktake.com</a><!--/email_off--> with your browser and what happened. Leave out anything private.</p>
     <div class="faq">
-      <details><summary>How do I change the colours?</summary><p>Click the puzzle-piece icon in your browser toolbar, then <b>Roster Sync</b>, then <b>Change shift colours</b>. Not there? Your copy is out of date: <a href="#manual">update it</a>.</p></details>
+      <details><summary>How do I change the colours?</summary><p>Click the puzzle-piece icon in your browser toolbar, then <b>Roster Sync</b>, then <b>Change shift colours</b>. Not there? Your copy is out of date: <a href="https://chromewebstore.google.com/detail/roster-sync/jlgiimpnkngngdhcegpleidolfnclfdh">get the latest from the Chrome Web Store</a>.</p></details>
       <details><summary>How do I stop it?</summary><p>Click the Roster Sync toolbar button and choose <b>Disconnect</b>, then remove the extension.</p></details>
     </div>
   </div>
@@ -373,9 +368,9 @@ a:hover{text-decoration-thickness:.14em}
 </footer>
 
 <script data-cfasync="false">
-const STORES = { chrome: '#manual', edge: '#manual', firefox: '#manual' };
-// Until the store listings are approved every button opens the manual install below. Then put the store links
-// here (Edge installs from the Chrome Web Store too, so edge can be the chrome link).
+const STORES = { chrome: 'https://chromewebstore.google.com/detail/roster-sync/jlgiimpnkngngdhcegpleidolfnclfdh', edge: 'https://chromewebstore.google.com/detail/roster-sync/jlgiimpnkngngdhcegpleidolfnclfdh' };
+// Chrome and Edge install from the Chrome Web Store. Firefox visitors see the "Chrome or Edge" note until its Firefox
+// Add-ons listing is live; then add firefox: '<link>' here, a data-store="firefox" link above, and 'firefox' below.
 // The same placeholders are also in the install links in the page (used when JavaScript is off),
 // so a find-and-replace updates both.
 
@@ -383,7 +378,6 @@ const ua = navigator.userAgent;
 const mobile = /Android|iPhone|iPad|iPod|Mobi/.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1);
 const browser = mobile ? ''
   : ua.includes('Edg/') ? 'edge'
-  : ua.includes('Firefox/') ? 'firefox'
   : window.chrome ? 'chrome'
   : '';
 const install = document.getElementById('install');
@@ -393,7 +387,7 @@ install.querySelectorAll('[data-store]').forEach(a => { a.href = STORES[a.datase
 
 if (browser) {
   const btn = document.getElementById('main-btn');
-  const name = { chrome: 'Chrome', edge: 'Edge', firefox: 'Firefox' }[browser];
+  const name = { chrome: 'Chrome', edge: 'Edge' }[browser];
   btn.href = STORES[browser];
   btn.querySelector('span').textContent = `Add to ${name} — it's free`;
   btn.hidden = false;
