@@ -153,6 +153,7 @@ a:hover{text-decoration-thickness:.14em}
 .ev small{margin-top:4px;padding:2px 9px;border-radius:999px;background:var(--accent);color:#2a2620;font-size:.78rem;font-weight:650}
 .ev.dayoff{background:none;border:2px dashed var(--border);color:var(--muted)}
 .map-note{max-width:40em;margin:20px 0 0;color:var(--muted)}
+.alerts{margin-top:20px;max-width:44em;scroll-margin-top:24px}
 @media (max-width:640px){.map li{grid-template-columns:1fr;gap:8px}.arrow{transform:rotate(90deg)}}
 
 /* privacy */
@@ -256,11 +257,11 @@ a:hover{text-decoration-thickness:.14em}
       <p class="made">Roster Sync uses your Google account only to keep your shifts in one calendar, Work roster. It doesn't use AI or handle images. <a href="https://pondertime.party/privacy.html">Privacy policy</a>. No ads. Made by a coworker, not by NSW Health.</p>
     </div>
 
-    <div class="shot" role="img" aria-label="Example with made-up shifts: an Employee Online roster from 19 October to 15 November with 21 shifts. The Sync panel on the roster reads: 21 shifts synced, 9:41 am, Sync again. Beside it, a phone calendar shows the same shifts, starting with a day shift in Biochem on Tuesday 20 October.">
+    <div class="shot" role="img" aria-label="Example with made-up shifts: an Employee Online roster from 19 October to 15 November with 21 shifts. The Sync panel on the roster reads: 21 shifts synced to Sun 15 Nov, Sync again. Beside it, a phone calendar shows the same shifts, starting with a day shift in Biochem on Tuesday 20 October.">
       <div class="roster">
         <div class="bar"><i></i><i></i><i></i><span>View Roster · 19 Oct – 15 Nov</span></div>
         <div class="eolbox"><div data-eol-grid></div></div>
-        <div class="pill"><span>21 shifts synced · 9:41 am</span><b>Sync again</b></div>
+        <div class="pill"><span>21 shifts synced to Sun 15 Nov</span><b>Sync again</b></div>
       </div>
       <div class="phone">
         <p class="ph-head"><b>October</b><span><i></i>Work roster</span></p>
@@ -295,7 +296,7 @@ a:hover{text-decoration-thickness:.14em}
 
 <section id="calendars" class="sec" aria-labelledby="cal-h">
   <div class="wrap">
-    <h2 id="cal-h">Using iPhone, Mac or Outlook?</h2>
+    <h2 id="cal-h">On your phone and other calendars</h2>
     <p class="sub">Shifts go into a <b>Work roster</b> calendar in your Google account (a free one is fine). To see it in another app, add that Google account.</p>
     <div class="steps">
       <div class="card"><h3>iPhone or iPad</h3><p><b>Settings → Apps → Calendar → Calendar Accounts → Add Account → Google</b></p></div>
@@ -303,6 +304,7 @@ a:hover{text-decoration-thickness:.14em}
       <div class="card"><h3>Outlook</h3><p>On the web: <b>Add calendar → Add personal calendars → Google</b></p></div>
     </div>
     <p class="map-note">No Work roster on your iPhone or Mac? Tick it at <a href="https://www.google.com/calendar/syncselect" rel="noopener">google.com/calendar/syncselect</a>.</p>
+    <div class="card alerts" id="alerts"><h3>Get an alert before each shift</h3><p>Set it once on the Work roster calendar and every shift gets it. Google Calendar app: <b>Settings → Work roster → Default notifications</b> (for example, 1 hour). On the web: <b>Settings → Work roster → Event notifications</b>. Leave all-day notifications off, so leave and ADOs stay quiet.</p></div>
   </div>
 </section>
 
@@ -329,6 +331,7 @@ a:hover{text-decoration-thickness:.14em}
     <div class="faq">
       <details><summary>Google says it hasn't verified the app?</summary><p>That's expected for now. Click <b>Advanced</b>, then <b>Go to Roster Sync</b>.</p></details>
       <details><summary>How do I change the colours?</summary><p>Click the puzzle-piece icon in your browser toolbar, then <b>Roster Sync</b>, then <b>Change shift colours</b>. Not there? Your copy is out of date: update it from the <a href="https://chromewebstore.google.com/detail/roster-sync/jlgiimpnkngngdhcegpleidolfnclfdh">Chrome Web Store</a> or <a href="https://addons.mozilla.org/firefox/addon/roster-sync/">Firefox Add-ons</a>.</p></details>
+      <details><summary>A red ! on the Roster Sync button?</summary><p>It hasn't synced on that computer for over 10 days, so recent changes may be missing. Open your roster or click <b>Sync now</b>. Pin Roster Sync (puzzle-piece icon, then the pin) to see it.</p></details>
       <details><summary>How do I stop it?</summary><p>Click the Roster Sync toolbar button and choose <b>Disconnect</b>, then remove the extension.</p></details>
     </div>
   </div>
