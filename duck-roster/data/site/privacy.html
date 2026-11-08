@@ -41,8 +41,8 @@ footer{padding-block:40px 48px;font-size:.92rem;color:var(--muted)}
 <ul>
   <li><b>Your roster page:</b> on Employee Online sites (addresses ending in .ros.health.nsw.gov.au) it reads the dates and shifts shown, such as "D 08:30 - 17:00 @ Biochem". It never reads your Employee Online password or any other website.</li>
   <li><b>Google Calendar</b> (<code>calendar.app.created</code>): lets it create one calendar named Work roster and add, change and delete events in calendars it created. It cannot see or change events in any other calendar.</li>
-  <li><b>Your Google calendar list</b> (<code>calendar.calendarlist.readonly</code>): lets it read the names of your calendars, so it can find the Work roster calendar it made when you use it in another browser or on another computer.</li>
-  <li><b>A Google sign-in token</b> that lasts about an hour. It never sees your Google password, email address or profile.</li>
+  <li><b>Your Google calendar list</b> (<code>calendar.calendarlist.readonly</code>): lets it read the names of your calendars, so it can find the Work roster calendar it made when you use it in another browser or on another computer. Your main calendar is named after your email address, so the list includes it. It is used only to tell your own calendars from ones shared with you, and is never stored.</li>
+  <li><b>A Google sign-in token</b> that lasts about an hour. It doesn't ask for your Google password or profile.</li>
 </ul>
 
 <h2>How it uses that data</h2>
