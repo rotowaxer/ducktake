@@ -1,0 +1,35 @@
+services:
+
+  app_proxy:
+    environment:
+      APP_HOST: duck-minecraft_app_1
+      APP_PORT: 80
+      PROXY_AUTH_ADD: "false"
+
+  # The app tile opens this page; the game itself is on port 25565.
+  app:
+    image: nginx:stable-alpine
+    restart: unless-stopped
+    volumes:
+      - ${APP_DATA_DIR}/data/web:/usr/share/nginx/html:ro
+
+  server:
+    image: itzg/minecraft-server:2026.11.0
+    restart: unless-stopped
+    stop_grace_period: 1m
+    ports:
+      - 25565:25565
+    environment:
+      EULA: "TRUE"
+      # Fabric with server-side mods only: vanilla gameplay, vanilla clients can join.
+      TYPE: FABRIC
+      VERSION: "26.3"
+      MODRINTH_PROJECTS: |
+        lithium
+        ferrite-core
+      MEMORY: 4G
+      USE_AIKAR_FLAGS: "true"
+      VIEW_DISTANCE: "10"
+      SIMULATION_DISTANCE: "8"
+    volumes:
+      - ${APP_DATA_DIR}/data/server:/data

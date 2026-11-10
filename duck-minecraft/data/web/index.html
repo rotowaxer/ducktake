@@ -1,0 +1,13 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Minecraft Server</title>
+<style>
+  body { font: 18px/1.5 system-ui, sans-serif; max-width: 34rem; margin: 3rem auto; padding: 0 1rem; color: #222; background: #fff; }
+  code { font-size: 1.4em; background: #eee; padding: .2em .5em; border-radius: 6px; }
+  @media (prefers-color-scheme: dark) { body { color: #eee; background: #161616; } code { background: #333; } }
+</style>
+<h1>Minecraft Server</h1>
+<p>Java Edition 26.3. In Minecraft choose Multiplayer, then Add Server, and enter:</p>
+<p><code id="addr">this device's address:25565</code></p>
+<script>document.getElementById("addr").textContent = location.hostname + ":25565";</script>

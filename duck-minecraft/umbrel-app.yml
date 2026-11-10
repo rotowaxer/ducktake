@@ -1,0 +1,24 @@
+manifestVersion: 1.0.0
+id: duck-minecraft
+icon: https://raw.githubusercontent.com/rotowaxer/ducktake/main/duck-minecraft/icon.svg
+name: Minecraft Server
+tagline: Vanilla Java Edition server with performance mods
+category: gaming
+version: "26.3"
+port: 18098
+description: >-
+  A Minecraft Java Edition 26.3 server. It runs Fabric with Lithium and FerriteCore,
+  server-side mods that make it faster and lighter on memory without changing gameplay,
+  so players join with the normal vanilla game. Connect to this device on port 25565.
+
+developer: Rotowaxer
+website: https://docker-minecraft-server.readthedocs.io/
+submitter: Rotowaxer
+support: https://github.com/itzg/docker-minecraft-server/issues
+repo: ""
+gallery: []
+path: /
+dependencies: []
+defaultUsername: ""
+defaultPassword: ""
+releaseNotes: ""
